@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aalam Jobs</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_splash_noaccount">Продолжить без аккаунта</string>
+    <string name="txt_splash_btn_register">Регистрация</string>
+    <string name="txt_splash_btn_login">Вход</string>
+    <string name="jobs_text">вакансии</string>
+    <string name="favorites_text">избранное</string>
+    <string name="applied_text">отправленное</string>
+    <string name="resume_text">мое резюме</string>
+    <string name="profile_text">профиль</string>
+</resources>

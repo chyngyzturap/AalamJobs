@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Aalam Jobs</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_splash_noaccount">Continue without an account</string>
+    <string name="txt_splash_btn_register">Register</string>
+    <string name="txt_splash_btn_login">Login</string>
+    <string name="jobs_text">jobs</string>
+    <string name="favorites_text">favorites</string>
+    <string name="applied_text">applied</string>
+    <string name="resume_text">my CV</string>
+    <string name="profile_text">profile</string>
+</resources>

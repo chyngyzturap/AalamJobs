@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aalam Jobs</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_splash_noaccount">Hesap olmadan devam et</string>
+    <string name="txt_splash_btn_register">Kayıt ol</string>
+    <string name="txt_splash_btn_login">Giriş</string>
+    <string name="jobs_text">meslekler</string>
+    <string name="favorites_text">favoriler</string>
+    <string name="applied_text">uygulamalı</string>
+    <string name="resume_text">özgeçmişim</string>
+    <string name="profile_text">profil</string>
+</resources>

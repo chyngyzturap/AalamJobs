@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/nav_jobs">
+
+
+    <fragment
+        android:id="@+id/nav_jobs"
+        android:name="com.pharos.aalamjobs.ui.jobs.JobsFragment"
+        android:label="jobs"
+        tools:layout="@layout/fragment_jobs" />
+    <fragment
+        android:id="@+id/nav_applied"
+        android:name="com.pharos.aalamjobs.ui.applied.AppliedFragment"
+        android:label="applied"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/nav_resume"
+        android:name="com.pharos.aalamjobs.ui.resume.ResumeFragment"
+        android:label="resume"
+        tools:layout="@layout/fragment_resume" />
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.pharos.aalamjobs.ui.favorites.FavoritesFragment"
+        android:label="favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.pharos.aalamjobs.ui.profile.ProfileFragment"
+        android:label="profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

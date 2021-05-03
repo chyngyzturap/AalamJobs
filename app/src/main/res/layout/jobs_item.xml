@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_container"
+        android:layout_margin="@dimen/cardview_default_elevation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/job_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="HR Manager"
+                android:textColor="#5A5A67"
+                android:textSize="18dp" />
+
+            <RelativeLayout
+                android:layout_marginTop="6dp"
+
+                android:id="@+id/job_location_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/job_title">
+
+                <ImageView
+                    android:id="@+id/job_vector_marker"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/vector_marker_location" />
+
+                <TextView
+
+                    android:id="@+id/job_name_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/job_vector_marker"
+                    android:fontFamily="@font/nunito"
+                    android:text="Bishkek, Kyrgyzstan"
+                    android:textColor="#5A5A67"
+                    android:textSize="10dp" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/job_location_container"
+                android:layout_marginTop="6dp">
+
+                <ImageView
+                    android:id="@+id/job_logo_company"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/logo_company_smartpost" />
+
+                <TextView
+                    android:layout_toRightOf="@id/job_logo_company"
+                    android:id="@+id/job_name_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Smartpost"
+                    android:textColor="#5A5A67"
+                    android:textSize="10dp" />
+
+
+                <TextView
+                    android:layout_marginTop="7dp"
+                    android:id="@+id/jobs_date"
+                    android:textSize="8dp"
+                    android:textColor="#5A5A67"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="29.04.2021" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/iv_job_favorite"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/vector_favorite_empty" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

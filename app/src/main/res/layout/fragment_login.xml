@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.LoginFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="12dp"
+            android:fontFamily="@font/nunito"
+            android:layout_centerHorizontal="true"
+            android:text="Please Sign Up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:id="@+id/tv_title"
+            android:layout_marginTop="60dp"/>
+
+        <EditText
+            android:layout_marginTop="35dp"
+            android:hint="(Full name)"
+            android:layout_below="@id/tv_title"
+            android:id="@+id/et_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:ems="10" />
+
+
+            <EditText
+                android:hint="(Password)"
+                android:layout_below="@id/et_login"
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:ems="10" />
+            
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/et_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:id="@+id/btn_container"
+                >
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:text="Get OTP" />
+            
+            <TextView
+                android:fontFamily="@font/nunito"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="6dp"
+                android:layout_below="@id/buttonLogin"
+                android:layout_centerHorizontal="true"
+                android:text="We will send to your number One Time Password"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_container"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true">
+            <TextView
+                android:textSize="12dp"
+                android:fontFamily="@font/nunito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already a member? "
+                android:id="@+id/txt_ask"/>
+
+                <TextView
+                    android:textSize="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/txt_ask"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Log in"
+                    android:layout_marginBottom="60dp"/>
+            </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
