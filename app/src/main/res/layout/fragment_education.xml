@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp"
+    tools:context=".ui.cv.EducationFragment">
+
+    <RelativeLayout
+        android:id="@+id/education_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:fadeScrollbars="true"
+            android:scrollbars="none"
+            android:id="@+id/buttons_for_navigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_personals" />
+
+                <Button
+                    android:scrollbars="none"
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_contacts" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+
+                    android:backgroundTint="@color/colorGreenBrand"
+                    android:textColor="@color/white"
+                    android:text="@string/tab_education" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_language" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_experience" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_achievements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/txt_links_2" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_requirements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_job_requirements" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+         <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/buttons_for_navigate"
+            android:background="#ABAABD" />
+
+    <RelativeLayout
+        android:layout_below="@id/buttons_for_navigate"
+        android:id="@+id/personal_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_title_ed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/txt_education"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/education_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tv_title_ed">
+
+        <RelativeLayout
+            android:id="@+id/education_info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          >
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_education2"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_education"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/tv_education"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_specialization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/specialization"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_specialization"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/tv_specialization"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/city"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/tv_city"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/country"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_calendar"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_date_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_country"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_date_from"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_date_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_from"
+                    android:layout_marginTop="6dp"
+                    android:inputType="date"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_calendar"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_date_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_date_from"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_date_to"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_date_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_to"
+                    android:layout_marginTop="6dp"
+                    android:inputType="date"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_attach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_date_to"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_search"
+                android:drawableLeft="@drawable/vector_download_file"
+                android:fontFamily="@font/nunito"
+                android:padding="7dp"
+                android:text="@string/txt_click_here_to_choose_file"
+                android:textSize="10sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/education_info_container_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        >
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_education_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_education2"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_education_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/tv_education_2"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_specialization_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/specialization"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_specialization_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/tv_specialization_2"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_city_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/city"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_city_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/tv_city_2"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_country_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/country"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_country_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_calendar"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_date_from_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_country_2"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_date_from"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_date_from_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_from"
+                    android:layout_marginTop="6dp"
+                    android:inputType="date"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_calendar"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_date_to_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_date_from_2"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_date_to"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_date_to_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_to"
+                    android:layout_marginTop="6dp"
+                    android:inputType="date"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_attach_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_date_to_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_search"
+                android:drawableLeft="@drawable/vector_download_file"
+                android:fontFamily="@font/nunito"
+                android:padding="7dp"
+                android:text="@string/txt_click_here_to_choose_file"
+                android:textSize="10sp" />
+
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/education_info_container_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:errorEnabled="true"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/vector_add_plus"
+                    app:helperText="@string/txt_required"
+                    app:helperTextTextColor="#D80027"
+                    android:id="@+id/tv_education_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/txt_education2"
+                    android:textSize="14sp" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_education_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lines="1"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_below="@id/tv_education_3"
+                    app:errorEnabled="true"
+                    app:endIconMode="clear_text"
+                    app:helperText="@string/txt_required"
+                    app:helperTextTextColor="#D80027"
+                    android:id="@+id/tv_specialization_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/specialization"
+                    android:textSize="14sp" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_specialization_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lines="1"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_below="@id/tv_specialization_3"
+                    app:errorEnabled="true"
+                    app:endIconMode="clear_text"
+                    app:helperText="@string/txt_required"
+                    app:helperTextTextColor="#D80027"
+                    android:id="@+id/tv_city_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/city"
+                    android:textSize="14sp" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_city_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lines="1"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_below="@id/tv_city_3"
+                    app:errorEnabled="true"
+                    app:endIconMode="clear_text"
+                    app:helperText="@string/txt_required"
+                    app:helperTextTextColor="#D80027"
+                    android:id="@+id/tv_country_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/country"
+                    android:textSize="14sp" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_country_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lines="1"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/vector_calendar"
+                    app:errorEnabled="true"
+                    app:helperText="@string/txt_required"
+                    app:helperTextTextColor="#D80027"
+                    android:id="@+id/tv_date_from_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_country_3"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/txt_date_from"
+                    android:textSize="14sp" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_date_from_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_date_from"
+                        android:layout_marginTop="6dp"
+                        android:inputType="date"
+                        android:lines="1"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/vector_calendar"
+                    app:errorEnabled="true"
+                    app:helperText="@string/txt_required"
+                    app:helperTextTextColor="#D80027"
+                    android:id="@+id/tv_date_to_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_from_3"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:hint="@string/txt_date_to"
+                    android:textSize="14sp" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_date_to_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_date_to"
+                        android:layout_marginTop="6dp"
+                        android:inputType="date"
+                        android:lines="1"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_attach_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_date_to_3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bg_search"
+                    android:drawableLeft="@drawable/vector_download_file"
+                    android:fontFamily="@font/nunito"
+                    android:padding="7dp"
+                    android:text="@string/txt_click_here_to_choose_file"
+                    android:textSize="10sp" />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/ed_btn_next"
+            android:layout_below="@id/education_info"
+            android:layout_marginVertical="50dp"
+            android:text="@string/txt_next"
+            app:cornerRadius="10dp"
+            style="@style/style_btn_green"/>
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

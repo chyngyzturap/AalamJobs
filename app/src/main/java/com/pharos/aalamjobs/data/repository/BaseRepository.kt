@@ -1,7 +1,7 @@
 package com.pharos.aalamjobs.data.repository
 
 import android.util.Log
-import com.pharos.aalamjobs.data.network.JobsApi
+import com.pharos.aalamjobs.data.network.AuthApi
 import com.pharos.aalamjobs.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,7 +34,7 @@ abstract class BaseRepository {
     }
 
     //TODO api: CouriersApi need to change
-    suspend fun logout(api: JobsApi) = safeApiCall {
+    suspend fun logout(api: AuthApi) = safeApiCall {
         api.logout()
     }
 }

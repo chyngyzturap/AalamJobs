@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_cv"
+    app:startDestination="@id/personalInformationFragment">
+
+    <fragment
+        android:id="@+id/personalInformationFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.PersonalInformationFragment"
+        android:label="fragment_personal_information"
+        tools:layout="@layout/fragment_personal_information" >
+        <action
+            android:id="@+id/action_personalInformationFragment_to_contactInformationFragment"
+            app:destination="@id/contactInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactInformationFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.ContactInformationFragment"
+        android:label="fragment_contact_information"
+        tools:layout="@layout/fragment_contact_information" >
+        <action
+            android:id="@+id/action_contactInformationFragment_to_educationFragment"
+            app:destination="@id/educationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/educationFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.EducationFragment"
+        android:label="fragment_education"
+        tools:layout="@layout/fragment_education" >
+        <action
+            android:id="@+id/action_educationFragment_to_languagesFragment"
+            app:destination="@id/languagesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.LanguagesFragment"
+        android:label="fragment_languages"
+        tools:layout="@layout/fragment_languages" >
+        <action
+            android:id="@+id/action_languagesFragment_to_workExperienceFragment"
+            app:destination="@id/workExperienceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/workExperienceFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.WorkExperienceFragment"
+        android:label="fragment_work_experience"
+        tools:layout="@layout/fragment_work_experience" >
+        <action
+            android:id="@+id/action_workExperienceFragment_to_linksFragment"
+            app:destination="@id/linksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobRequirementFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.JobRequirementFragment"
+        android:label="fragment_job_reqiurements"
+        tools:layout="@layout/fragment_job_reqiurements" />
+    <fragment
+        android:id="@+id/linksFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.AchievementsFragment"
+        android:label="fragment_links"
+        tools:layout="@layout/fragment_achievements" >
+        <action
+            android:id="@+id/action_linksFragment_to_jobRequirementFragment"
+            app:destination="@id/jobRequirementFragment" />
+    </fragment>
+</navigation>

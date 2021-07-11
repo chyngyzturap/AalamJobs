@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp"
+    tools:context=".ui.cv.PersonalInformationFragment">
+
+    <RelativeLayout
+        android:id="@+id/personal_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <HorizontalScrollView
+            android:fadeScrollbars="true"
+            android:scrollbars="none"
+            android:id="@+id/buttons_for_navigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/colorGreenBrand"
+                    android:textColor="@color/white"
+                    android:text="@string/tab_personals" />
+
+                <Button
+                    android:scrollbars="none"
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_contacts" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_education" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_language" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_experience" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_achievements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/txt_links_2" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_requirements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_job_requirements" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/buttons_for_navigate"
+            android:background="#ABAABD" />
+
+    <RelativeLayout
+        android:layout_below="@id/buttons_for_navigate"
+        android:id="@+id/personal_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        >
+        <TextView
+            android:id="@+id/tv_title_pi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/txt_personal_information"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_developer_mode"
+            android:id="@+id/open_room_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:id="@+id/profile_head_container"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/tv_title_pi"
+            android:layout_centerHorizontal="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:id="@+id/iv_photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/image_april_smith" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+
+                android:id="@+id/iv_add_profile_photo"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_add_photo"
+                app:civ_border_color="@color/transparent"
+                app:civ_border_width="2dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/profile_info_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_head_container"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_first_name"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:lines="1"
+                android:textSize="14sp"
+                android:id="@+id/et_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_first_name"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_last_name"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:lines="1"
+                android:textSize="14sp"
+                android:id="@+id/et_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_last_name"
+              />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                android:id="@+id/tv_middle_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_last_name"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_middle_name"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:lines="1"
+                android:textSize="14sp"
+                android:id="@+id/et_middle_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_middle_name"
+                android:layout_marginTop="6dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_calendar"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_birth_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_middle_name"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_birth_date"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:lines="1"
+                android:textSize="14sp"
+                android:id="@+id/et_birth_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_birth_date"
+                android:layout_marginTop="6dp"
+                android:inputType="date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_citizenship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_birth_date"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:text="@string/txt_citizenship"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:lines="1"
+                android:textSize="14sp"
+                android:id="@+id/et_citizenship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_citizenship"
+                android:layout_marginTop="6dp"
+                android:hint="@string/txt_citizenship2" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_citizenship"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:text="@string/txt_gender"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_gender"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="125dp"
+                    android:layout_height="25dp"
+                    android:checked="true"
+                    android:text="@string/txt_female" />
+
+                <RadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="125dp"
+                    android:layout_height="25dp"
+                    android:text="@string/txt_male" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_marital_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radioGroup"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:text="@string/txt_marital_status"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/spinner_marital_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_marital_status"
+                android:entries="@array/marital_status" />
+
+        </RelativeLayout>
+
+        <Button
+            android:text="@string/txt_next"
+            android:id="@+id/personal_btn_next"
+            android:layout_marginVertical="50dp"
+            app:cornerRadius="10dp"
+            style="@style/style_btn_green" />
+
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

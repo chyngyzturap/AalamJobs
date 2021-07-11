@@ -14,69 +14,43 @@
         android:id="@+id/iv_logo_container">
 
         <ImageView
-            android:id="@+id/iv_splash_upvector"
-            android:layout_width="81dp"
-            android:layout_height="23dp"
-            android:src="@drawable/logo_vector_up"
-            android:layout_centerHorizontal="true" />
-
-        <ImageView
             android:id="@+id/iv_splash_logo"
-            android:layout_width="192dp"
-            android:layout_height="44dp"
-            android:layout_below="@id/iv_splash_upvector"
-            android:src="@drawable/logo" />
-
-        <ImageView
-            android:id="@+id/iv_splash_downvector"
-            android:layout_width="81dp"
-            android:layout_height="30dp"
-            android:src="@drawable/logo_vector_down"
-            android:layout_below="@id/iv_splash_logo"
-            android:layout_centerHorizontal="true" />
-
+            android:layout_width="253dp"
+            android:layout_height="165dp"
+            android:src="@drawable/logo_white" />
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/bottom_splash_container"
         android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/iv_logo_container"
-        android:layout_centerInParent="true"
-        android:paddingBottom="20dp"
-        android:layout_marginVertical="50dp">
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="50dp">
 
         <Button
-            android:textSize="14sp"
-            android:fontFamily="@font/nunito"
             android:id="@+id/btn_splash_log"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_splash_btn_login"
-            android:textColor="@color/colorTextSplash"
-            android:layout_above="@id/btn_splash_reg" />
-
-        <Button
-            android:textSize="14sp"
+            android:layout_above="@id/tv_splash_noaccount"
+            android:backgroundTint="@color/white"
             android:fontFamily="@font/nunito"
-            android:id="@+id/btn_splash_reg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_splash_btn_register"
-            android:textColor="@color/colorTextSplash"
-            android:layout_above="@id/tv_splash_noaccount" />
+            android:text="@string/txt_splash_btn_login"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <TextView
-            android:textSize="14dp"
-            android:fontFamily="@font/nunito"
             android:id="@+id/tv_splash_noaccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/nunito"
             android:text="@string/txt_splash_noaccount"
             android:textColor="@color/white"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
@@ -85,6 +59,22 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_margin="20dp"
-        android:src="@drawable/lang_english_flag"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/bg_white_border"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/bottom_splash_container"
+        android:id="@+id/lang_change"
+        android:textColor="@color/white"
+        android:fontFamily="@font/nunito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/txt_choose_lang"/>
+
 </RelativeLayout>

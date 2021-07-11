@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp"
+    tools:context=".ui.cv.LanguagesFragment">
+
+    <RelativeLayout
+        android:id="@+id/lang_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:fadeScrollbars="true"
+            android:scrollbars="none"
+            android:id="@+id/buttons_for_navigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_personals" />
+
+                <Button
+                    android:scrollbars="none"
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_contacts" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_education" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+
+                    android:backgroundTint="@color/colorGreenBrand"
+                    android:textColor="@color/white"
+                    android:text="@string/tab_language" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_experience" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_achievements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/txt_links_2" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_requirements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_job_requirements" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+         <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/buttons_for_navigate"
+            android:background="#ABAABD" />
+
+    <RelativeLayout
+        android:layout_below="@id/buttons_for_navigate"
+        android:id="@+id/personal_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_title_lng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/txt_language"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/lang_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_lng"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_native"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_native_language"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_native"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_native"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/other_lang_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_native"
+                android:layout_marginTop="15dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/nunito"
+                android:text="@string/txt_other_languages"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_other"
+                android:layout_marginTop="6dp"
+                android:hint="@string/txt_other_languages_2"
+                android:lines="1"
+                android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_listening_container"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/tv_other"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_talking"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_talking" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_talking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_talking"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_speaking_container"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_listening_container"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_speaking"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_speaking" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_listening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_speaking"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_reading_container"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_speaking_container"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_reading"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_reading" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_reading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_reading"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_writing_container"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_reading_container"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_writing"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_writing" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_writing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_writing"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/other_lang_container_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_native"
+                android:layout_marginTop="15dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_other_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/nunito"
+                android:text="@string/txt_other_languages"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_other_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_other"
+                android:layout_marginTop="6dp"
+                android:hint="@string/txt_other_languages_2"
+                android:lines="1"
+                android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_listening_container_2"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/tv_other_2"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_talking_2"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_talking" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_talking_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_talking_2"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_speaking_container_2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_listening_container_2"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_speaking_2"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_speaking" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_listening_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_speaking_2"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_reading_container_2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_speaking_container_2"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_reading_2"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_reading" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_reading_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_reading_2"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_writing_container_2"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_reading_container_2"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_writing_2"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_writing" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_writing_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_writing_2"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/other_lang_container_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_native"
+                android:layout_marginTop="15dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:errorEnabled="true"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                android:id="@+id/tv_other_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/nunito"
+                android:text="@string/txt_other_languages"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_other_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_other"
+                android:layout_marginTop="6dp"
+                android:hint="@string/txt_other_languages_2"
+                android:lines="1"
+                android:textSize="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_listening_container_3"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/tv_other_3"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_talking_3"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_talking" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_talking_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_talking_3"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_speaking_container_3"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_listening_container_3"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_speaking_3"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_speaking" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_listening_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_speaking_3"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_reading_container_3"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_speaking_container_3"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_reading_3"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_reading" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_reading_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_reading_3"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lang_writing_container_3"
+
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/lang_reading_container_3"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/tv_writing_3"
+                    style="@style/style_txt_skills"
+                    android:text="@string/txt_writing" />
+
+                <Spinner
+                    android:id="@+id/lang_sp_writing_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_writing_3"
+                    android:entries="@array/lang_skills" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/lang_btn_next"
+            style="@style/style_btn_green"
+            android:layout_below="@id/lang_info"
+            android:layout_marginVertical="50dp"
+            android:text="@string/txt_next"
+            app:cornerRadius="10dp" />
+    </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

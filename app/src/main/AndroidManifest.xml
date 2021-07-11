@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.pharos.aalamjobs">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
+        android:requestLegacyExternalStorage="true"
+        android:name=".utils.AalamJobsApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_test"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_test_round"
         android:supportsRtl="true"
-        android:theme="@style/SplashTheme">
-        <activity android:name=".ui.auth.AuthActivity"></activity>
+        android:theme="@style/SplashTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.jobs.JobSearchDetailActivity"></activity>
+        <activity android:name=".ui.resume.CvWebPreviewActivity" />
+        <activity android:name=".ui.cv.CvActivity" />
+        <activity android:name=".ui.auth.AuthActivity" />
         <activity android:name=".ui.jobs.JobsDetailActivity" />
         <activity
             android:name=".ui.splash.SplashActivity"

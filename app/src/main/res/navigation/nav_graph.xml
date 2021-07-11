@@ -30,5 +30,39 @@
         android:id="@+id/nav_profile"
         android:name="com.pharos.aalamjobs.ui.profile.ProfileFragment"
         android:label="profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_nav_profile_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_nav_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.pharos.aalamjobs.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_nav_profile"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_settingsFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.pharos.aalamjobs.ui.profile.edit.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.pharos.aalamjobs.ui.settings.password.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <!--    <fragment-->
+<!--        android:id="@+id/jobsDetailFragment"-->
+<!--        android:name="com.pharos.aalamjobs.ui.jobs.JobsDetailFragment"-->
+<!--        android:label="JobsDetailFragment"-->
+<!--        tools:layout="@layout/fragment_jobs_detail"/>-->
 </navigation>

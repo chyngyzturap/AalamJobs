@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="5dp"
+    android:layout_marginVertical="5dp"
+
+    android:background="@drawable/bg_card_view"
     >
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:id="@+id/item_container"
-        android:layout_margin="@dimen/cardview_default_elevation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -18,13 +20,27 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/jobs_salary"
                 android:id="@+id/job_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:fontFamily="@font/nunito"
-                android:text="HR Manager"
+                android:lines="1"
+                android:text=""
                 android:textColor="#5A5A67"
-                android:textSize="18dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_marginTop="3dp"
+                android:id="@+id/jobs_salary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/nunito_bold"
+                android:text=""
+                android:textSize="15sp" />
 
             <RelativeLayout
                 android:layout_marginTop="6dp"
@@ -38,25 +54,25 @@
                     android:id="@+id/job_vector_marker"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/vector_marker_location" />
+                    android:src="@drawable/vector_marker_location_darkgreen" />
 
                 <TextView
-
+android:lines="1"
                     android:id="@+id/job_name_location"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="7dp"
                     android:layout_toRightOf="@id/job_vector_marker"
                     android:fontFamily="@font/nunito"
-                    android:text="Bishkek, Kyrgyzstan"
+                    android:text=""
                     android:textColor="#5A5A67"
-                    android:textSize="10dp" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
 
             <RelativeLayout
+                android:id="@+id/job_date_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/job_location_container"
@@ -66,43 +82,47 @@
                     android:id="@+id/job_logo_company"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/logo_company_smartpost" />
+                    android:src="@drawable/vector_no_logo" />
 
                 <TextView
+                    android:lines="1"
                     android:layout_toRightOf="@id/job_logo_company"
                     android:id="@+id/job_name_company"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="6dp"
                     android:fontFamily="@font/nunito"
-                    android:text="Smartpost"
+                    android:text=""
                     android:textColor="#5A5A67"
-                    android:textSize="10dp" />
+                    android:textSize="14sp" />
 
 
                 <TextView
+                    android:lines="1"
                     android:layout_marginTop="7dp"
                     android:id="@+id/jobs_date"
-                    android:textSize="8dp"
-                    android:textColor="#5A5A67"
+                    android:textSize="10sp"
+                    android:textColor="#F3A683"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:fontFamily="@font/nunito"
-                    android:text="29.04.2021" />
+                    android:text="" />
+
             </RelativeLayout>
 
+
+
             <ImageView
+                android:layout_above="@id/job_date_container"
                 android:id="@+id/iv_job_favorite"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/vector_favorite_empty" />
+                android:layout_alignParentEnd="true" />
 
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 </RelativeLayout>

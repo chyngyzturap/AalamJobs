@@ -16,7 +16,7 @@
             android:id="@+id/auth_toolbar_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_mini"
+            android:src="@drawable/logo_green"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/vector_backpressed_arrow"
+            android:src="@drawable/vector_backpressed_green"
             android:layout_gravity="end"
             android:layout_marginRight="6dp" />
 

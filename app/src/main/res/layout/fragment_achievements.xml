@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp"
+    tools:context=".ui.cv.AchievementsFragment">
+
+    <RelativeLayout
+        android:id="@+id/experience_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:fadeScrollbars="true"
+            android:scrollbars="none"
+            android:id="@+id/buttons_for_navigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_personals" />
+
+                <Button
+                    android:scrollbars="none"
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_contacts" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_education" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_language" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_experience" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_achievements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/colorGreenBrand"
+                    android:textColor="@color/white"
+                    android:text="@string/txt_achievements" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_requirements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_job_requirements" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+         <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/buttons_for_navigate"
+            android:background="#ABAABD" />
+
+    <RelativeLayout
+        android:layout_below="@id/buttons_for_navigate"
+        android:id="@+id/personal_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_title_we"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/links_related_to_your_work_experience_optional"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/work_exp_info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_we"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_links"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:textSize="14sp"
+                app:errorEnabled="true"
+                app:helperTextTextColor="#D80027">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:drawableStart="@drawable/vector_attach_link"
+                    android:id="@+id/et_links"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_phone"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_below="@+id/tv_links"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                android:id="@+id/tv_skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_skills">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:id="@+id/et_skills"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                android:id="@+id/tv_achievements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_skills"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_achievements"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:textSize="14dp"
+                    android:id="@+id/et_achievements"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_achievements"
+                    android:layout_marginTop="6dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/links_btn_next"
+            android:layout_below="@id/work_exp_info_container"
+            android:layout_marginVertical="50dp"
+            android:text="@string/txt_next"
+            app:cornerRadius="10dp"
+            style="@style/style_btn_green"/>
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

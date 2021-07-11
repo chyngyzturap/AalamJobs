@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "585896043685",
+    "project_id": "aalam-jobs",
+    "storage_bucket": "aalam-jobs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585896043685:android:626a2067a48bdb7a3ad94c",
+        "android_client_info": {
+          "package_name": "com.pharos.aalamjobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585896043685-bt1jjjerbs20aidhtisesoi5b3sl1qvv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pharos.aalamjobs",
+            "certificate_hash": "139908da181f322d648b0a6cdf7c0417aa46c544"
+          }
+        },
+        {
+          "client_id": "585896043685-5ob8nja7i29kdpblede53e8n8a9j01c1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf5zBW3EZK9_etKa5cBFhXNVGAyFpKJcQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "585896043685-5ob8nja7i29kdpblede53e8n8a9j01c1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

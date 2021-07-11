@@ -13,8 +13,8 @@
         android:elevation="5dp">
 
         <ImageView
-            android:src="@drawable/logo_mini"
-            android:layout_width="0dp"
+            android:src="@drawable/logo_green"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:id="@+id/auth_toolbar_title"
             android:textSize="20sp"
@@ -25,10 +25,14 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <EditText
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/et_search"
+            android:singleLine="true"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/bg_search"
+            android:layout_width="195dp"
+            android:layout_height="25dp"
             android:drawableRight="@drawable/vector_btn_search"
-            android:hint="search"
+            android:hint="@string/txt_search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_search_detail"
             app:layout_constraintStart_toEndOf="@+id/auth_toolbar_title"
@@ -52,15 +56,35 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_jobs"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/jobs_toolbar"
-        android:clipToPadding="false"
-        tools:listitem="@layout/jobs_item" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/jobs_toolbar">
+
+        <androidx.core.widget.NestedScrollView
+
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:paddingHorizontal="10dp"
+                android:id="@+id/rv_jobs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/jobs_toolbar"
+                tools:listitem="@layout/jobs_item"
+                app:layoutManager="LinearLayoutManager"/>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"

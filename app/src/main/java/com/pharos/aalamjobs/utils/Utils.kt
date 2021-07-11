@@ -6,8 +6,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.pharos.aalamjobs.data.network.Resource
-import com.pharos.aalamjobs.ui.auth.LoginFragment
+import com.pharos.aalamjobs.ui.auth.login.LoginFragment
 import com.pharos.aalamjobs.ui.base.BaseFragment
+
+const val CHOOSE_IMAGE_REQUEST = 456
+
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>){
     Intent(this, activity).also {

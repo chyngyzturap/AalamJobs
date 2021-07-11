@@ -1,7 +1,9 @@
 package com.pharos.aalamjobs.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.pharos.aalamjobs.R
 import kotlinx.android.synthetic.main.activity_auth.*
 
@@ -13,6 +15,10 @@ class AuthActivity : AppCompatActivity() {
         iv_backpressed.setOnClickListener {
             onBackPressed()
         }
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentAuth) as NavHostFragment
+        val navController: NavController = navHostFragment.navController
     }
 
 }

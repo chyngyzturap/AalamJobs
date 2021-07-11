@@ -1,13 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.favorites.FavoritesFragment">
 
-    <TextView
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/logged_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/jobs_toolbar"
+        android:elevation="5dp">
+
+        <ImageView
+            android:src="@drawable/logo_green"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/auth_toolbar_title"
+            android:textSize="20sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+            android:singleLine="true"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/bg_search"
+            android:layout_width="195dp"
+            android:layout_height="25dp"
+            android:drawableRight="@drawable/vector_btn_search"
+            android:hint="@string/txt_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_search_detail"
+            app:layout_constraintStart_toEndOf="@+id/auth_toolbar_title"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </EditText>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_search_detail"
+            android:padding="8dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/vector_detail_search"
+            android:layout_gravity="end"
+            android:layout_marginRight="6dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:paddingHorizontal="10dp"
+
+        android:id="@+id/rv_jobs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jobs_toolbar"
+        tools:listitem="@layout/jobs_item"
+        app:layoutManager="LinearLayoutManager"/>
+
+    <ProgressBar
+        android:layout_centerInParent="true"
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_favorites"
+        android:fontFamily="@font/nunito"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/favorites_text" />
+
+</RelativeLayout>

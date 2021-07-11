@@ -7,29 +7,25 @@
     tools:context=".ui.splash.SplashScreenActivity"
     android:background="@color/colorGreenBrand">
 
-    <ImageView
-        android:id="@+id/iv_splash_logo"
-        android:layout_width="192dp"
-        android:layout_height="44dp"
-        android:src="@drawable/logo"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        />
+        android:id="@+id/iv_logo_container">
 
-    <ImageView
-        android:id="@+id/iv_splash_downvector"
-        android:layout_width="81dp"
-        android:layout_height="30dp"
-        android:src="@drawable/logo_vector_down"
-        android:layout_below="@id/iv_splash_logo"
-        android:layout_centerInParent="true"/>
-    <ImageView
-        android:id="@+id/iv_splash_upvector"
-        android:layout_width="81dp"
-        android:layout_height="23dp"
-        android:src="@drawable/logo_vector_up"
-        android:layout_above="@id/iv_splash_logo"
-        android:layout_centerInParent="true"/>
 
+
+        <ImageView
+            android:id="@+id/iv_splash_logo"
+            android:layout_width="253dp"
+            android:layout_height="165dp"
+            android:src="@drawable/logo_white" />
+
+
+
+
+
+    </RelativeLayout>
 <!--    <ImageView-->
 <!--        android:layout_width="25dp"-->
 <!--        android:layout_height="25dp"-->

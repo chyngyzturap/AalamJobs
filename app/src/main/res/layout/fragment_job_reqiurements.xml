@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp"
+    tools:context=".ui.cv.JobRequirementFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:fadeScrollbars="true"
+            android:scrollbars="none"
+            android:id="@+id/buttons_for_navigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_personal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_personals" />
+
+                <Button
+                    android:scrollbars="none"
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_contacts" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_education" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_language" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/tab_experience" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_achievements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="#5A5A67"
+                    android:text="@string/txt_links_2" />
+
+                <Button
+                    android:textAllCaps="false"
+                    android:id="@+id/btn_requirements"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+
+                    android:backgroundTint="@color/colorGreenBrand"
+                    android:textColor="@color/white"
+                    android:text="@string/tab_job_requirements" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+         <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"
+            android:layout_below="@+id/buttons_for_navigate"
+            android:background="#ABAABD" />
+
+    <RelativeLayout
+        android:layout_below="@id/buttons_for_navigate"
+        android:id="@+id/personal_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_title_jr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito"
+            android:text="@string/txt_job_requirements"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/work_exp_info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title_jr"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_toStartOf="@id/tv_salary_currency"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:textSize="14sp"
+                android:id="@+id/tv_salary"
+                android:hint="@string/txt_salary_expectations"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_salary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_position"
+                    android:layout_marginTop="6dp"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:textSize="14dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+             <TextView
+                android:padding="8dp"
+                android:text="USD"
+                 android:layout_marginTop="25dp"
+                android:id="@+id/tv_salary_currency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/nunito_bold"
+                android:src="@drawable/vector_currency_dollar"
+                android:textSize="16sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_employment_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_salary"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/employment_type"
+                android:textSize="14sp"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_arrow_down"
+                app:errorEnabled="true"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
+                >
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:drawableEnd="@drawable/vector_arrow_down"
+                    android:id="@+id/et_employment_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_phone"
+                    android:layout_marginTop="6dp"
+                    android:lines="1"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:textSize="14sp"
+                android:id="@+id/tv_position"
+                android:layout_below="@id/tv_employment_type"
+                android:hint="@string/txt_position_you_would_like_to_work"
+                 >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_position"
+                android:layout_marginTop="6dp"
+                android:lines="1"
+                android:textSize="14dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_calendar"
+                app:errorEnabled="true"
+                android:id="@+id/tv_earliest_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_position"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_the_earliest_date_you_can_start_working"
+                android:textSize="14sp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_earliest_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_earliest_date"
+                android:layout_marginTop="6dp"
+                android:inputType="date"
+                android:lines="1"
+                android:textSize="14sp" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/cb_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_earliest_date"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp">
+
+                <CheckBox
+                    android:id="@+id/cb_have"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/txt_i_have_a_computer"
+                    android:textSize="10sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_need"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/cb_have"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/txt_i_need_a_computer"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_computer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cb_container"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito"
+                android:hint="@string/txt_profile_information"
+                app:counterEnabled="true"
+                app:counterMaxLength="1000"
+                android:textSize="14sp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:maxLength="1001"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/job_req_btn_save"
+            android:layout_below="@id/work_exp_info_container"
+            android:layout_marginVertical="50dp"
+            android:text="@string/txt_save"
+            app:cornerRadius="10dp"
+            style="@style/style_btn_green"/>
+    </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
