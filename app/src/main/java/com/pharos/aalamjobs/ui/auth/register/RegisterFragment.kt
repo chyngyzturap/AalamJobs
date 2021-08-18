@@ -27,6 +27,7 @@ import com.pharos.aalamjobs.ui.auth.AuthViewModel
 import com.pharos.aalamjobs.ui.auth.utils.LoginListener
 import com.pharos.aalamjobs.ui.base.BaseFragment
 import com.pharos.aalamjobs.utils.handleApiError
+import com.pharos.aalamjobs.utils.hideSoftKeyboard
 import com.pharos.aalamjobs.utils.visible
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.coroutines.launch
@@ -42,6 +43,14 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
     lateinit var storedVerificationId: String
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.setOnClickListener {
+            hideSoftKeyboard(requireActivity())
+        }
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -62,7 +71,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
                 is Resource.Failure -> handleApiError(it) { }
             }
         })
-
 
         binding.buttonLogin.setOnClickListener {
             checkPhone()
@@ -91,7 +99,7 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener {
             if (it.isSuccessful)
-                viewModel.createNewUser(createUserModel)
+//                viewModel.createNewUser(createUserModel)
             else
                 Log.d("RegisterRegularFragment", "signInwithPhone: failed ${it.exception}")
         }

@@ -2,6 +2,7 @@ package com.pharos.aalamjobs.ui.auth.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +19,7 @@ import com.pharos.aalamjobs.ui.auth.utils.UserListener
 import com.pharos.aalamjobs.ui.base.BaseFragment
 import com.pharos.aalamjobs.ui.main.MainActivity
 import com.pharos.aalamjobs.utils.handleApiError
+import com.pharos.aalamjobs.utils.hideSoftKeyboard
 import com.pharos.aalamjobs.utils.startNewActivity
 import com.pharos.aalamjobs.utils.visible
 import kotlinx.coroutines.launch
@@ -72,6 +74,14 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
             binding.phoneContainer.visible(true)
             binding.tvLoginWithEmail.visible(true)
             binding.tvLoginWithPhone.visible(false)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view.setOnClickListener {
+            hideSoftKeyboard(requireActivity())
         }
     }
 

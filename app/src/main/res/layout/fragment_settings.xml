@@ -75,35 +75,47 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/settings_container"
         android:layout_width="320dp"
-        android:layout_height="370dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/settings_profile_container"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:background="@drawable/bg_settings"
         android:paddingHorizontal="20dp">
 
-        <TextView
-           android:textColor="#7A7A7A"
-            android:id="@+id/tv_settings_language"
+        <LinearLayout
+            android:id="@+id/settings_container_lang"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:fontFamily="@font/nunito"
-            android:gravity="center_vertical"
-            android:text="@string/txt_language"
-            android:textSize="19sp"
-            app:drawableRightCompat="@drawable/vector_arrow_right" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#7A7A7A"
+                android:id="@+id/tv_settings_language"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nunito"
+                android:gravity="center_vertical"
+                android:text="@string/txt_language"
+                android:textSize="19sp"
+                app:drawableRightCompat="@drawable/vector_arrow_right" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/tv_settings_language"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/browser_actions_bg_grey" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_settings_language"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/browser_actions_bg_grey" />
+        </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/settings_container_about_us"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
             android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_about_us"
@@ -123,7 +135,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@color/browser_actions_bg_grey" />
+    </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/settings_container_change_pwd"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_change_password"
@@ -143,7 +161,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@color/browser_actions_bg_grey" />
-
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/settings_container_contact_us"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_contact_us"
@@ -163,7 +186,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@color/browser_actions_bg_grey" />
-
+</LinearLayout>
+        <LinearLayout
+            android:id="@+id/settings_container_help"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <TextView
             android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_help"
@@ -177,13 +205,14 @@
             app:drawableRightCompat="@drawable/vector_arrow_right" />
 
         <View
+            android:id="@+id/view_help"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/tv_settings_help"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@color/browser_actions_bg_grey" />
-
+    </LinearLayout>
         <TextView
             android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_Logout"
@@ -197,6 +226,6 @@
             app:drawableRightCompat="@drawable/vector_arrow_right" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -18,6 +18,7 @@ import com.pharos.aalamjobs.databinding.FragmentOtpBinding
 import com.pharos.aalamjobs.ui.auth.AuthViewModel
 import com.pharos.aalamjobs.ui.auth.utils.LoginListener
 import com.pharos.aalamjobs.ui.base.BaseFragment
+import com.pharos.aalamjobs.utils.hideSoftKeyboard
 import com.pharos.aalamjobs.utils.visible
 import kotlinx.android.synthetic.main.fragment_otp.*
 import okhttp3.ResponseBody
@@ -64,7 +65,7 @@ class OtpFragment : BaseFragment<AuthViewModel, FragmentOtpBinding, AuthReposito
                     binding.progressbar.visible(true)
                 } else {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        Toast.makeText(requireContext(), "${task.exception}", Toast.LENGTH_SHORT)
+                        Toast.makeText(requireContext(), "${task.exception?.message}", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
@@ -84,6 +85,10 @@ class OtpFragment : BaseFragment<AuthViewModel, FragmentOtpBinding, AuthReposito
         }
 
         auth = FirebaseAuth.getInstance()
+
+        view.setOnClickListener {
+            hideSoftKeyboard(requireActivity())
+        }
     }
 
     override fun getViewModel() = AuthViewModel::class.java

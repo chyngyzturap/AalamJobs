@@ -24,6 +24,7 @@ import com.pharos.aalamjobs.ui.auth.utils.UserListener
 import com.pharos.aalamjobs.ui.base.BaseFragment
 import com.pharos.aalamjobs.utils.dialogfragments.LogOutDialogDialogFragment
 import com.pharos.aalamjobs.utils.dialogfragments.SignUpDialogFragment
+import com.pharos.aalamjobs.utils.visible
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -34,6 +35,8 @@ class SettingsFragment : BaseFragment<AuthViewModel, FragmentSettingsBinding, Au
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        showCurrent()
 
         val token = runBlocking { userPreferences.tokenAccess.first() }
         if (token.isNullOrEmpty()) {
@@ -68,6 +71,18 @@ class SettingsFragment : BaseFragment<AuthViewModel, FragmentSettingsBinding, Au
             val logOutDialogFragment = LogOutDialogDialogFragment()
             val manager = requireActivity().supportFragmentManager
             logOutDialogFragment.show(manager, "logOutDialog")
+        }
+    }
+
+    private fun showCurrent() {
+        val token = runBlocking { userPreferences.tokenAccess.first() }
+        if (token.isNullOrEmpty()){
+            binding.settingsContainerChangePwd.visible(false)
+            binding.tvSettingsLogout.visible(false)
+            binding.viewHelp.visible(false)
+        } else {
+            binding.settingsContainerChangePwd.visible(true)
+            binding.tvSettingsLogout.visible(true)
         }
     }
 

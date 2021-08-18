@@ -3,6 +3,7 @@ package com.pharos.aalamjobs.utils
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.pharos.aalamjobs.R
@@ -59,5 +60,17 @@ fun Fragment.handleApiError(
             val error = failure.errorBody?.string().toString()
             requireView().snackbar(error)
         }
+    }
+}
+
+fun hideSoftKeyboard(activity: Activity) {
+    val inputMethodManager: InputMethodManager = activity.getSystemService(
+        Activity.INPUT_METHOD_SERVICE
+    ) as InputMethodManager
+    if (inputMethodManager.isAcceptingText) {
+        inputMethodManager.hideSoftInputFromWindow(
+            activity.currentFocus!!.windowToken,
+            0
+        )
     }
 }

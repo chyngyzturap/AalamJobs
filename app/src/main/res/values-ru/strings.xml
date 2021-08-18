@@ -165,7 +165,7 @@
     <string name="your_website_or_portfolio_links">Your website or portfolio liСсылки на ваш сайт или портфолиоnks</string>
     <string name="press_icon">нажмите на иконку, чтобы добавить тег</string>
     <string name="i_am_currently_working_on_this_position">Я сейчас работаю на этой должности</string>
-    <string name="password_length">Пароль не может быть меньше 8n\'t be less than 8</string>
+    <string name="password_length">Пароль не может быть меньше 8</string>
     <string name="password_numeric">Этот пароль полностью числовой</string>
     <string name="already_exist">Пользователь с этим номером телефона уже существует</string>
     <string name="exist_user">Пользователь с этим номером телефона уже существует</string>
