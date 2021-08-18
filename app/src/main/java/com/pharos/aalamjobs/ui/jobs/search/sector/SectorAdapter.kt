@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.pharos.aalamjobs.data.responses.SectorResponseItem
+import com.pharos.aalamjobs.data.responses.dialog.SectorResponseItem
 import com.pharos.aalamjobs.databinding.ListItemBinding
 
 class SectorAdapter(
@@ -13,7 +13,6 @@ class SectorAdapter(
 ) : ListAdapter<SectorResponseItem, SectorAdapter.JobsViewHolder>(DIFF) {
 
     private var _binding: ListItemBinding? = null
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobsViewHolder {
         _binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,23 +23,19 @@ class SectorAdapter(
         holder.onBind(position)
     }
 
-
     fun getItemAtPos(position: Int): SectorResponseItem {
         return getItem(position)
     }
 
     inner class JobsViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun onBind(position: Int) {
             val current = getItemAtPos(position)
-
             binding.tvCounter.text = current.name
 
             binding.root.setOnClickListener {
                 listener.onSectorClick(position)
             }
-
         }
     }
 
@@ -53,7 +48,6 @@ class SectorAdapter(
             override fun areContentsTheSame(oldItem: SectorResponseItem, newItem: SectorResponseItem): Boolean {
                 return oldItem.id == newItem.id
             }
-
         }
     }
 

@@ -7,42 +7,39 @@
     tools:context=".ui.resume.ResumeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:id="@+id/jobs_toolbar"
         android:elevation="5dp">
 
         <ImageView
-            android:id="@+id/auth_toolbar_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_green"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/iv_backpressed"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
+            android:id="@+id/iv_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/iv_backpressed"
-            android:padding="8dp"
-            android:layout_marginEnd="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/vector_backpressed_green"
             android:layout_gravity="end"
-            android:layout_marginRight="6dp" />
+            android:layout_marginEnd="6dp"
+            android:padding="8dp"
+            android:src="@drawable/vector_cancel_darkgreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/logged_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/jobs_toolbar">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/jobs_toolbar">
+        >
+
         <androidx.recyclerview.widget.RecyclerView
             android:paddingHorizontal="10dp"
             android:id="@+id/rv_jobs"
@@ -52,16 +49,31 @@
             tools:listitem="@layout/resumes_item"
             app:layoutManager="LinearLayoutManager"/>
 
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <ProgressBar
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_resumes"
+        android:fontFamily="@font/nunito"
         android:layout_centerInParent="true"
-        android:id="@+id/progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/please_write_your_resume"/>
+
+
 
 </RelativeLayout>

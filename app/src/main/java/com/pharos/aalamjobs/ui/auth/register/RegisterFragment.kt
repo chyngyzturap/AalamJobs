@@ -1,8 +1,11 @@
 package com.pharos.aalamjobs.ui.auth.register
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -29,6 +32,7 @@ import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import java.util.concurrent.TimeUnit
+import java.util.regex.Pattern
 
 
 class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, AuthRepository>(),
@@ -39,15 +43,13 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         progressbar.visible(false)
-
-
-
+        viewModel.setLoginListener(this)
         auth = FirebaseAuth.getInstance()
+        setupListeners()
 
         viewModel.user.observe(viewLifecycleOwner, Observer {
             binding.progressbar.visible(it is Resource.Loading)
@@ -55,7 +57,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
             when (it) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
-//                        viewModel.saveUser(it.value.username, it.value.id, it.value.email)
                     }
                 }
                 is Resource.Failure -> handleApiError(it) { }
@@ -65,7 +66,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
 
         binding.buttonLogin.setOnClickListener {
             checkPhone()
-            initUI()
         }
 
         binding.tvLogin.setOnClickListener {
@@ -75,16 +75,19 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
     }
 
     private fun checkPhone() {
-        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhonenumber.text.toString().trim()
+        binding.progressbar.visible(true)
+        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+            .trim() + binding.etPhonenumber.text.toString().trim()
         viewModel.checkPhone(username)
     }
 
     private fun signInWithPhone(authCredential: PhoneAuthCredential) {
-        val password = binding.etPassword.text.toString().trim()
-        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhonenumber.text.toString().trim()
+        val password = binding.etPasswordRegister.text.toString().trim()
+        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+            .trim() + binding.etPhonenumber.text.toString().trim()
         val role = binding.spinnerRole.selectedItem.toString().trim()
         val fullname = binding.etFullName.text.toString().trim()
-       val createUserModel = CreateUserModel(username, password, role, fullname)
+        val createUserModel = CreateUserModel(username, password, role, fullname)
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener {
             if (it.isSuccessful)
@@ -96,15 +99,13 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
 
     private fun initCallbackClient() {
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 signInWithPhone(credential)
-//                Toast.makeText(requireContext(), "Success + $credential", Toast.LENGTH_SHORT).show()
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
                 progressbar.visible(false)
-                Toast.makeText(requireContext(), "Failed", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Failed + $e", Toast.LENGTH_LONG).show()
             }
 
             override fun onCodeSent(
@@ -112,36 +113,29 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 super.onCodeSent(verificationId, token)
-
                 Log.d("TAG", "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
                 resendToken = token
-                val password = binding.etPassword.text.toString().trim()
-                val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhonenumber.text.toString().trim()
+                val password = binding.etPasswordRegister.text.toString().trim()
+                val username = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+                    .trim() + binding.etPhonenumber.text.toString().trim()
                 val role = binding.spinnerRole.selectedItem.toString().trim()
                 val fullname = binding.etFullName.text.toString().trim()
-
-
                 val bundle = Bundle()
                 bundle.putString("storedVerificationId", storedVerificationId)
                 bundle.putString("username", username)
                 bundle.putString("password", password)
                 bundle.putString("role", role)
                 bundle.putString("fullname", fullname)
-
                 findNavController().navigate(R.id.action_nav_register_to_nav_otp, bundle)
             }
         }
     }
 
-
     private fun initUI() {
-
         initCallbackClient()
         getOtp()
-
     }
-
 
     private fun sendVerificationCode(number: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -155,7 +149,8 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
 
     private fun getOtp() {
         progressbar.visible(true)
-        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhonenumber.text.toString().trim()
+        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+            .trim() + binding.etPhonenumber.text.toString().trim()
         if (username.isNotEmpty()) {
             sendVerificationCode(username)
         } else {
@@ -176,39 +171,79 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
     )
 
     override fun isUserExists(available: Boolean) {
-        if (!available) {
-            Toast.makeText(requireContext(), "Failed", Toast.LENGTH_LONG).show()
-
+        if (available) {
+            initUI()
         } else {
-            val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhonenumber.text.toString().trim()
-
-            val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
-                .setPhoneNumber(username)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(requireActivity())
-                .setCallbacks(callbacks)
-                .build()
-            PhoneAuthProvider.verifyPhoneNumber(options)
+            binding.progressbar.visible(false)
+            Toast.makeText(requireContext(), getString(R.string.exist_user), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
+    inner class TextFieldValidation(private val view: View) : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {}
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            when (view.id) {
+                R.id.et_password_register -> {
+                    validatePassword()
+                }
+            }
+        }
+    }
+
+    private fun validatePassword(): Boolean {
+        if (binding.etPasswordRegister.text.toString().length < 8) {
+            binding.tvPassword.error = getString(R.string.password_length)
+            binding.tvPassword.refreshErrorIconDrawableState()
+            binding.etPasswordRegister.requestFocus()
+            return false
+        } else {
+            binding.tvPassword.error = null
+        }
+        if (!isStringContainNumber(binding.etPasswordRegister.text.toString())) {
+            binding.tvPassword.error = getString(R.string.password_numeric)
+            binding.tvPassword.refreshErrorIconDrawableState()
+            binding.etPasswordRegister.requestFocus()
+            return false
+        } else {
+            binding.tvPassword.error = null
+        }
+        return true
+    }
+
+    private fun isStringContainNumber(text: String): Boolean {
+        val pattern = Pattern.compile(".*[a-z].*")
+
+        val matcher = pattern.matcher(text)
+        return matcher.matches()
+    }
+
+    private fun setupListeners() {
+        binding.etPasswordRegister.addTextChangedListener(TextFieldValidation(binding.etPasswordRegister))
+    }
+
     override fun signInFail(errorCode: ResponseBody?, code: Int?) {
-        TODO("Not yet implemented")
+    }
+
+    override fun checkSuccess() {
+    }
+
+    override fun checkInFail(error: String?) {
     }
 
     override fun userDataSavedLogin() {
-        TODO("Not yet implemented")
     }
 
     override fun loginSuccess(loginResponse: LoginResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun loginFail(code: Int?) {
-        TODO("Not yet implemented")
     }
 
 }
+
 
 
 

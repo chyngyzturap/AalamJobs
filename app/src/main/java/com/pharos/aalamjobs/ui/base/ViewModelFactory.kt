@@ -19,7 +19,7 @@ class ViewModelFactory(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(AuthViewModel::class.java) -> AuthViewModel(repository as AuthRepository) as T
-            modelClass.isAssignableFrom(JobsViewModel::class.java) -> JobsViewModel(repository as JobsRepository ) as T
+            modelClass.isAssignableFrom(JobsViewModel::class.java) -> JobsViewModel(repository as JobsRepository) as T
             modelClass.isAssignableFrom(CvViewModel::class.java) -> CvViewModel(repository as CvRepository) as T
             else -> throw IllegalArgumentException("ViewModelClass not found")
         }

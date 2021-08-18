@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "social_table")
 data class Social(
-    val facebook: String,
-    val linkedin: String,
-    val twitter: String,
-    val whatsapp: String,
-    val telegram: String
+    val facebook: String?,
+    val linkedin: String?,
+    val twitter: String?,
+    val whatsapp: String?,
+    val telegram: String?
 ){
     @PrimaryKey
     var id: Int = 1

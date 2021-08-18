@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp"
-    tools:context=".ui.cv.JobRequirementFragment">
+    tools:context=".ui.cv.jobapplicationform.JobRequirementFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
                     android:textColor="#5A5A67"
-                    android:text="@string/txt_links_2" />
+                    android:text="@string/txt_achievements" />
 
                 <Button
                     android:textAllCaps="false"
@@ -146,6 +146,8 @@
                 android:textSize="14sp"
                 android:id="@+id/tv_salary"
                 android:hint="@string/txt_salary_expectations"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -161,8 +163,9 @@
             </com.google.android.material.textfield.TextInputLayout>
 
              <TextView
+                 android:drawableEnd="@drawable/vector_arrow_down"
                 android:padding="8dp"
-                android:text="USD"
+                android:text="@string/currency"
                  android:layout_marginTop="25dp"
                 android:id="@+id/tv_salary_currency"
                 android:layout_width="wrap_content"
@@ -192,6 +195,8 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:drawableEnd="@drawable/vector_arrow_down"
                     android:id="@+id/et_employment_type"
+                    android:editable="false"
+                    tools:ignore="Deprecated"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_phone"
@@ -212,6 +217,8 @@
                 android:id="@+id/tv_position"
                 android:layout_below="@id/tv_employment_type"
                 android:hint="@string/txt_position_you_would_like_to_work"
+                app:helperText="@string/txt_required"
+                app:helperTextTextColor="#D80027"
                  >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -241,11 +248,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_earliest_date"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_earliest_date"
                 android:layout_marginTop="6dp"
-                android:inputType="date"
                 android:lines="1"
                 android:textSize="14sp" />
 

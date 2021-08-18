@@ -33,7 +33,6 @@ abstract class BaseRepository {
         }
     }
 
-    //TODO api: CouriersApi need to change
     suspend fun logout(api: AuthApi) = safeApiCall {
         api.logout()
     }

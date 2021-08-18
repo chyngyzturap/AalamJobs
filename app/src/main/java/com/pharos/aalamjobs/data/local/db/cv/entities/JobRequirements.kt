@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "job_req_table")
 data class JobRequirements (
-    val salary_expectations: Int,
-    val employment_type: Int,
+    val salary_expectations: Int?,
+    val employment_type: Int?,
     val position: String?,
     val date_can_start: String?,
     val bio: String?

@@ -13,8 +13,6 @@ import com.pharos.aalamjobs.data.network.AuthApi
 import com.pharos.aalamjobs.data.repository.AuthRepository
 import com.pharos.aalamjobs.databinding.FragmentPasswordOtpBinding
 import com.pharos.aalamjobs.ui.auth.AuthViewModel
-import com.pharos.aalamjobs.ui.auth.register.RegisterFragment
-import com.pharos.aalamjobs.ui.auth.register.SmsBroadcastReceiver
 import com.pharos.aalamjobs.ui.base.BaseFragment
 import com.pharos.aalamjobs.utils.visible
 import kotlinx.android.synthetic.main.fragment_otp.*
@@ -22,20 +20,14 @@ import kotlinx.android.synthetic.main.fragment_otp.*
 class PasswordOtpFragment : BaseFragment<AuthViewModel, FragmentPasswordOtpBinding, AuthRepository>() {
 
     lateinit var auth: FirebaseAuth
-    lateinit var reg: RegisterFragment
     private var inputText: String? = ""
     private var phone: String? = ""
-    private var codeSent: String? = null
-
-    var smsBroadcastReceiver: SmsBroadcastReceiver? = null
-    private val REQ_USER_CONSENT = 200
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         progressbar.visible(false)
 
         inputText = arguments?.getString("storedVerificationId")
-//        codeSent = arguments?.getString("storedVerificationId", "")
         phone = arguments?.getString("phone")
 
         binding.buttonValidate.setOnClickListener {
@@ -43,7 +35,6 @@ class PasswordOtpFragment : BaseFragment<AuthViewModel, FragmentPasswordOtpBindi
                 inputText!!,
                 binding.pinviewOtp.text.toString()
             )
-//            signInWithCredentials(credential)
             val firebaseAuth = FirebaseAuth.getInstance()
             firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -53,16 +44,11 @@ class PasswordOtpFragment : BaseFragment<AuthViewModel, FragmentPasswordOtpBindi
 
                 } else {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-// The verification code entered was invalid
-                        Toast.makeText(requireContext(), "Invalid OTP", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.invalid_otp), Toast.LENGTH_SHORT).show()
                     }
-//                binding.prBarCodeConfirmRegister.hide()
-//                binding.codeErrorRegister.visibility = View.VISIBLE
-//                binding.codeErrorRegister.text = getString(R.string.wrongCode)
                 }
             }
         }
-
     }
 
     override fun getViewModel() = AuthViewModel::class.java

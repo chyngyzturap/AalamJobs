@@ -59,8 +59,7 @@ class JobsAdapter(
                     current.city.country.name.en
             binding.jobsDate.text = current.published_date.split("T")[0]
             binding.jobsSalary.text =
-                current.salary.min.toString() + "-" + current.salary.max +
-                        current.salary.currency.value + current.salary.currency.sign
+                current.salary.min.toString() + "-" + current.salary.max + current.currency.sign
 
 
 

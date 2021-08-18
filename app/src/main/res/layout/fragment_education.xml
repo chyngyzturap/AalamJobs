@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp"
-    tools:context=".ui.cv.EducationFragment">
+    tools:context=".ui.cv.jobapplicationform.EducationFragment">
 
     <RelativeLayout
         android:id="@+id/education_container"
@@ -87,7 +87,7 @@
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
                     android:textColor="#5A5A67"
-                    android:text="@string/txt_links_2" />
+                    android:text="@string/txt_achievements" />
 
                 <Button
                     android:textAllCaps="false"
@@ -264,7 +264,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_date_from"
                     android:layout_marginTop="6dp"
-                    android:inputType="date"
+                    android:editable="false"
+                    tools:ignore="Deprecated"
                     android:lines="1"
                     android:textSize="14sp" />
 
@@ -292,7 +293,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_date_to"
                     android:layout_marginTop="6dp"
-                    android:inputType="date"
+                    android:editable="false"
+                    tools:ignore="Deprecated"
                     android:lines="1"
                     android:textSize="14sp" />
 
@@ -445,7 +447,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_date_from"
                     android:layout_marginTop="6dp"
-                    android:inputType="date"
+                    android:editable="false"
+                    tools:ignore="Deprecated"
                     android:lines="1"
                     android:textSize="14sp" />
 
@@ -473,7 +476,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_date_to"
                     android:layout_marginTop="6dp"
-                    android:inputType="date"
+                    android:editable="false"
+                    tools:ignore="Deprecated"
                     android:lines="1"
                     android:textSize="14sp" />
 
@@ -626,7 +630,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_date_from"
                         android:layout_marginTop="6dp"
-                        android:inputType="date"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:lines="1"
                         android:textSize="14sp" />
 
@@ -654,7 +659,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_date_to"
                         android:layout_marginTop="6dp"
-                        android:inputType="date"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:lines="1"
                         android:textSize="14sp" />
 

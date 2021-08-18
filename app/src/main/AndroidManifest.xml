@@ -9,7 +9,6 @@
 
     <application
         android:requestLegacyExternalStorage="true"
-        android:name=".utils.AalamJobsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_test"
         android:label="@string/app_name"
@@ -17,24 +16,37 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.jobs.JobSearchDetailActivity"></activity>
-        <activity android:name=".ui.resume.CvWebPreviewActivity" />
-        <activity android:name=".ui.cv.CvActivity" />
-        <activity android:name=".ui.auth.AuthActivity" />
-        <activity android:name=".ui.jobs.JobsDetailActivity" />
+        <activity android:name=".ui.jobs.JobSearchDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.resume.CvWebPreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.cv.CvActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.auth.AuthActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.jobs.JobsDetailActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.splash.SplashActivity"
-            android:theme="@style/SplashTheme" />
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.splash.SplashScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"

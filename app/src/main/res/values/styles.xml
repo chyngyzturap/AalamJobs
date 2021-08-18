@@ -34,6 +34,14 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:backgroundTint">@color/colorGreenBrand2</item>
     </style>
+    <style name="style_btn_green2">
+        <item name="android:layout_below">@id/profile_info_container</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:backgroundTint">@color/colorGreenBrand</item>
+    </style>
     <style name="style_btn_white">
         <item name="android:layout_below">@id/profile_info_container</item>
         <item name="android:layout_width">wrap_content</item>

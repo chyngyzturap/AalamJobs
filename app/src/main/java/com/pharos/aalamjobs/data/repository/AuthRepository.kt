@@ -21,6 +21,7 @@ class AuthRepository(
     suspend fun createUser(createUserModel: CreateUserModel) = safeApiCall {
         api.createUser(createUserModel)
     }
+
     suspend fun changePassword(changePasswordModel: ChangePasswordModel) = safeApiCall {
         api.changePassword(changePasswordModel)
     }
@@ -29,8 +30,10 @@ class AuthRepository(
         api.forgotPassword(forgotPasswordModel)
     }
 
-    suspend fun updateProfile(photo: MultipartBody.Part?, email: RequestBody, fullname: RequestBody,
-        position: RequestBody, city: RequestBody, country: RequestBody) = safeApiCall {
+    suspend fun updateProfile(
+        photo: MultipartBody.Part?, email: RequestBody, fullname: RequestBody,
+        position: RequestBody, city: RequestBody, country: RequestBody
+    ) = safeApiCall {
         api.updateProfile(photo, email, fullname, position, city, country)
     }
 
@@ -42,16 +45,18 @@ class AuthRepository(
         api.checkPhone(phone)
     }
 
-    suspend fun saveAuthToken(tokenAccess: String) {
-        preferences.saveAuthToken(tokenAccess)
+    suspend fun saveAuthToken(tokenAccess: String, tokenRefresh: String) {
+        preferences.saveAuthToken(tokenAccess, tokenRefresh)
     }
 
     suspend fun saveLang(lang: String) {
         preferences.saveLang(lang)
     }
 
-    suspend fun saveUser(email: String, id: Int, username: String, photo: String,
-                         city: String, country: String, position: String, fullname: String) {
+    suspend fun saveUser(
+        email: String, id: Int, username: String, photo: String,
+        city: String, country: String, position: String, fullname: String
+    ) {
         preferences.saveUser(email, id, username, photo, city, country, position, fullname)
     }
 

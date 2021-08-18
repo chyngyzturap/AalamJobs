@@ -54,7 +54,7 @@
                 android:fontFamily="@font/nunito"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_search_detail"
+                android:id="@+id/tv_clear_all"
                 android:padding="8dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -97,6 +97,8 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:drawableEnd="@drawable/vector_arrow_down"
                         android:id="@+id/et_country"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_phone"
@@ -122,6 +124,8 @@
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:drawableEnd="@drawable/vector_arrow_down"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:id="@+id/et_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -149,6 +153,8 @@
                         android:drawableEnd="@drawable/vector_arrow_down"
                         android:id="@+id/et_industry"
                         android:layout_width="match_parent"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:textSize="14sp" />
@@ -163,6 +169,7 @@
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/nunito"
                     android:textSize="14sp"
+                    android:enabled="false"
                     app:errorEnabled="true"
                     app:endIconMode="custom"
                     app:endIconDrawable="@drawable/vector_arrow_down" android:hint="@string/speciality"
@@ -170,6 +177,8 @@
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:drawableEnd="@drawable/vector_arrow_down"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:id="@+id/et_spec"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -190,7 +199,6 @@
                     android:hint="@string/salary2">
 
                     <androidx.appcompat.widget.AppCompatEditText
-                        android:drawableEnd="@drawable/vector_arrow_down"
                         android:id="@+id/et_salary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -206,6 +214,7 @@
                     android:layout_below="@id/tv_salary"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/nunito"
+                    android:enabled="false"
                     android:textSize="14sp"
                     app:errorEnabled="true"
                     android:hint="@string/employment_type">
@@ -214,6 +223,8 @@
                         android:drawableEnd="@drawable/vector_arrow_down"
                         android:id="@+id/et_employment_type"
                         android:layout_width="match_parent"
+                        android:editable="false"
+                        tools:ignore="Deprecated"
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:textSize="14sp" />

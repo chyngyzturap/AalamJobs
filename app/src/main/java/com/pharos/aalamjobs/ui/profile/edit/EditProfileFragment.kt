@@ -1,14 +1,15 @@
 package com.pharos.aalamjobs.ui.profile.edit
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.webkit.MimeTypeMap
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.pharos.aalamjobs.R
@@ -19,32 +20,30 @@ import com.pharos.aalamjobs.databinding.FragmentEditProfileBinding
 import com.pharos.aalamjobs.ui.auth.AuthViewModel
 import com.pharos.aalamjobs.ui.auth.utils.UserListener
 import com.pharos.aalamjobs.ui.base.BaseFragment
-import com.pharos.aalamjobs.utils.CHOOSE_IMAGE_REQUEST
 import com.pharos.aalamjobs.utils.visible
+import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.MultipartBody.Part.Companion.createFormData
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.create
 import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.ByteArrayOutputStream
-import java.io.IOException
+import java.io.*
 
 
 class EditProfileFragment : BaseFragment<AuthViewModel, FragmentEditProfileBinding, AuthRepository>(),
 UserListener{
-
-    var bitmap: Bitmap? = null
-    val mUserResponse: UserResponse? = null
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
+    private var file: File? = null
+    var requestImage: MultipartBody.Part? = null
+    private lateinit var cropActivityResultLauncher: ActivityResultLauncher<Any?>
+    private val cropActivityResultContract = object : ActivityResultContract<Any?, Uri?>() {
+        override fun createIntent(context: Context, input: Any?): Intent {
+            return CropImage.activity().setAspectRatio(1, 1).getIntent(requireActivity())
+        }
+        override fun parseResult(resultCode: Int, intent: Intent?): Uri? {
+            return CropImage.getActivityResult(intent)?.uri
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,7 +54,7 @@ UserListener{
         viewModel.getProfileInfo()
 
         binding.ivAddProfilePhoto.setOnClickListener {
-            openImageChooser()
+            cropActivityResultLauncher.launch(null)
         }
 
         binding.ivBackpressed.setOnClickListener {
@@ -65,40 +64,22 @@ UserListener{
         binding.ivDone.setOnClickListener {
             uploadData()
         }
+
     }
 
-
-    private fun openImageChooser() {
-        val intent = Intent().apply {
-            type = "image/*"
-            action = Intent.ACTION_GET_CONTENT
-        }
-        startActivityForResult(
-            Intent.createChooser(intent, "Выберите фото профиля!"),
-            CHOOSE_IMAGE_REQUEST
-        )
-    }
-
-    @Suppress("DEPRECATION")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK && requestCode == CHOOSE_IMAGE_REQUEST)
-
-        {
-            val path = data!!.data
-
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, path)
-                binding.ivProfilePhoto.setImageBitmap(bitmap)
-
-            } catch (e: IOException) {
-                e.printStackTrace()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        cropActivityResultLauncher = requireActivity().registerForActivityResult(cropActivityResultContract){
+            it?.let { uri ->
+                binding.ivProfilePhoto.setImageURI(uri)
+                if (file == null){
+                   file = fileFromContentUri(requireContext(), uri)
+                }
+                val requestFile : RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file!!)
+                requestImage = MultipartBody.Part.createFormData("photo", file!!.name, requestFile)
             }
         }
-
     }
-
     override fun getViewModel() = AuthViewModel::class.java
 
     override fun getFragmentBinding(
@@ -108,7 +89,6 @@ UserListener{
 
     override fun getFragmentRepository(): AuthRepository {
         val token = runBlocking { userPreferences.tokenAccess.first() }
-        val apiNoToken = remoteDataSource.buildApiWithoutToken(AuthApi::class.java, token)
         val api = remoteDataSource.buildApi(AuthApi::class.java, token)
         return AuthRepository(api, userPreferences)
     }
@@ -121,21 +101,16 @@ UserListener{
         binding.tvEmail.editText?.setText(userResponse.email)
         binding.tvFullName.editText?.setText(userResponse.fullname)
 
-        if (userResponse.photo.isNotEmpty())
+        if (userResponse.photo != "")
             Glide.with(binding.root).load(userResponse.photo)
-                .error(
-                    ContextCompat.getDrawable(
-                        binding.root.context, R.drawable.logo
-                    )
-                ).into(binding.ivProfilePhoto)
+                .into(binding.ivProfilePhoto)
     }
 
     @Suppress("DEPRECATION")
-    private fun uploadImage(imageBytes: ByteArray, mEmail: String, mFullname: String,
-                            mPosition: String, mCity: String, mCountry: String) {
-
-        val requestFile: RequestBody = create("image".toMediaTypeOrNull(), imageBytes)
-        val body: MultipartBody.Part = createFormData("image", "image", requestFile)
+    private fun uploadImage(
+        imageBytes: MultipartBody.Part?, mEmail: String, mFullname: String,
+        mPosition: String, mCity: String, mCountry: String
+    ) {
         val fullname: RequestBody =
             mFullname.toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val email: RequestBody =
@@ -146,23 +121,17 @@ UserListener{
             mCity.toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val country: RequestBody =
             mCountry.toRequestBody("multipart/form-data".toMediaTypeOrNull())
-       viewModel.updateProfile(body, email, fullname, position, city, country)
-//        mProgressBar.setVisibility(View.VISIBLE)
+       viewModel.updateProfile(imageBytes, email, fullname, position, city, country)
     }
 
     private fun uploadData(){
-        val byteArrayOutputStream = ByteArrayOutputStream()
-        val imageInByte = byteArrayOutputStream.toByteArray()
-
         val email = binding.etEmail.text.toString().trim()
         val fullname = binding.etFullName.text.toString().trim()
         val position = binding.etTitle.text.toString().trim()
         val city = binding.etCity.text.toString().trim()
         val country = binding.etCountry.text.toString().trim()
 
-
-        uploadImage(imageInByte, email, fullname, position, city, country)
-
+        uploadImage(requestImage, email, fullname, position, city, country)
         findNavController().navigate(R.id.nav_profile)
     }
 
@@ -171,19 +140,43 @@ UserListener{
     }
 
     override fun dataError(code: Int?) {
-        TODO("Not yet implemented")
     }
 
-    override fun setUserId(id: Int?, logo: String?) {
-        TODO("Not yet implemented")
+
+    private fun fileFromContentUri(context: Context, uri: Uri?) : File {
+        val fileExtension = getFileExtension(context, uri)
+        val fileName = "temp_file.jpg" + if (fileExtension != null) ".$fileExtension" else ""
+
+        val tempFile = File(context.cacheDir, fileName)
+        tempFile.createNewFile()
+
+        try {
+            val osStream = FileOutputStream(tempFile)
+            val inputStream = uri?.let { context.contentResolver.openInputStream(it) }
+
+            inputStream?.let {
+                copy(inputStream, osStream)
+            }
+            osStream.flush()
+        }
+        catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return tempFile
     }
 
-    override fun updateUserSuccess() {
-        TODO("Not yet implemented")
+    private fun getFileExtension(context: Context, uri: Uri?): String? {
+        val fileType : String? = uri?.let { context.contentResolver.getType(it) }
+        return MimeTypeMap.getSingleton().getExtensionFromMimeType(fileType)
     }
 
-    override fun quitDone() {
-        TODO("Not yet implemented")
+    @Throws(IOException::class)
+    private fun copy(source: InputStream, target: OutputStream) {
+        val buf = ByteArray(8192)
+        var length: Int
+        while (source.read(buf).also { length = it } > 0) {
+            target.write(buf, 0, length)
+        }
     }
 
 }

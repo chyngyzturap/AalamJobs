@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.pharos.aalamjobs.R
 import com.pharos.aalamjobs.data.network.Resource
 import com.pharos.aalamjobs.ui.auth.login.LoginFragment
 import com.pharos.aalamjobs.ui.base.BaseFragment
@@ -31,7 +32,7 @@ fun View.enable(enabled: Boolean) {
 fun View.snackbar(msg: String, action: (() -> Unit)? = null){
     val snackbar = Snackbar.make(this, msg, Snackbar.LENGTH_LONG)
     action?.let {
-        snackbar.setAction("Retry"){
+        snackbar.setAction(context.getString(R.string.retry)){
             it()
         }
     }
@@ -44,12 +45,12 @@ fun Fragment.handleApiError(
 ){
     when {
         failure.isNetworkError -> requireView().snackbar(
-            "Please check your internet connection",
+            getString(R.string.check_internet_connect),
             retry
         )
         failure.errorCode == 401 -> {
             if (this is LoginFragment) {
-                requireView().snackbar("You've entered incorrect email or password")
+                requireView().snackbar(getString(R.string.incorrect_email_pwd))
             } else {
                 (this as BaseFragment<*, *, *>).logout()
             }

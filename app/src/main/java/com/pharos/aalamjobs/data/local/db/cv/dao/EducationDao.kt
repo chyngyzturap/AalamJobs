@@ -32,64 +32,64 @@ interface EducationDao {
     fun getList(): List<Education>
 
     @Query("SELECT institution FROM education_table")
-    fun getInstitution(): String
+    fun getInstitution(): String?
 
     @Query("SELECT date_from FROM education_table")
-    fun getEdDateFrom(): String
+    fun getEdDateFrom(): String?
 
     @Query("SELECT date_to FROM education_table")
-    fun getEdDateTo(): String
+    fun getEdDateTo(): String?
 
     @Query("SELECT specialization FROM education_table")
-    fun getEdSpecialization(): String
+    fun getEdSpecialization(): String?
 
     @Query("SELECT city FROM education_table")
-    fun getEdCity(): String
+    fun getEdCity(): String?
 
     @Query("SELECT country FROM education_table")
-    fun getEdCountry(): String
+    fun getEdCountry(): String?
 
 
     @Query("SELECT * FROM education_table2")
     fun getList2(): List<Education>
 
     @Query("SELECT institution FROM education_table2")
-    fun getInstitution2(): String
+    fun getInstitution2(): String?
 
     @Query("SELECT date_from FROM education_table2")
-    fun getEdDateFrom2(): String
+    fun getEdDateFrom2(): String?
 
     @Query("SELECT date_to FROM education_table2")
-    fun getEdDateTo2(): String
+    fun getEdDateTo2(): String?
 
     @Query("SELECT specialization FROM education_table2")
-    fun getEdSpecialization2(): String
+    fun getEdSpecialization2(): String?
 
     @Query("SELECT city FROM education_table2")
-    fun getEdCity2(): String
+    fun getEdCity2(): String?
 
     @Query("SELECT country FROM education_table2")
-    fun getEdCountry2(): String
+    fun getEdCountry2(): String?
 
 
     @Query("SELECT * FROM education_table3")
     fun getList3(): List<Education>
 
     @Query("SELECT institution FROM education_table3")
-    fun getInstitution3(): String
+    fun getInstitution3(): String?
 
     @Query("SELECT date_from FROM education_table3")
-    fun getEdDateFrom3(): String
+    fun getEdDateFrom3(): String?
 
     @Query("SELECT date_to FROM education_table3")
-    fun getEdDateTo3(): String
+    fun getEdDateTo3(): String?
 
     @Query("SELECT specialization FROM education_table3")
-    fun getEdSpecialization3(): String
+    fun getEdSpecialization3(): String?
 
     @Query("SELECT city FROM education_table3")
-    fun getEdCity3(): String
+    fun getEdCity3(): String?
 
     @Query("SELECT country FROM education_table3")
-    fun getEdCountry3(): String
+    fun getEdCountry3(): String?
 }

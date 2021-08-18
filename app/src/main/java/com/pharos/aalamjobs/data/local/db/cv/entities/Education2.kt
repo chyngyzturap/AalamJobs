@@ -8,9 +8,9 @@ data class Education2(
     val institution: String?,
     val date_from: String?,
     val date_to: String?,
-    val specialization: String,
-    val city: String,
-    val country: String
+    val specialization: String?,
+    val city: String?,
+    val country: String?
 ){
     @PrimaryKey
     var id: Int = 1

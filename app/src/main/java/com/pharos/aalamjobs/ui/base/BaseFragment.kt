@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.pharos.aalamjobs.data.local.prefs.UserPreferences
-import com.pharos.aalamjobs.data.local.user.UserDataLocalImplement
 import com.pharos.aalamjobs.data.network.AuthApi
 import com.pharos.aalamjobs.data.network.RemoteDataSource
 import com.pharos.aalamjobs.data.repository.BaseRepository
@@ -23,11 +22,10 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 
-abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding, R : BaseRepository> : Fragment(), CoroutineScope {
+abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding, R : BaseRepository> : Fragment(),
+    CoroutineScope {
     private lateinit var job: Job
-
     protected lateinit var userPreferences: UserPreferences
-    private var userDataLocal: UserDataLocalImplement? = null
     protected lateinit var binding: B
     protected lateinit var viewModel: VM
 
@@ -44,7 +42,6 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding, R : BaseReposit
     override fun onDestroy() {
         super.onDestroy()
         job.cancel()
-
     }
 
     override fun onCreateView(
@@ -56,20 +53,17 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewBinding, R : BaseReposit
         binding = getFragmentBinding(inflater, container)
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory).get(getViewModel())
-
         lifecycleScope.launch { userPreferences.tokenAccess.first() }
-
         return binding.root
     }
 
-    fun logout() = lifecycleScope.launch{
+    fun logout() = lifecycleScope.launch {
         val tokenAccess = userPreferences.tokenAccess.first()
         val api = remoteDataSource.buildApi(AuthApi::class.java, tokenAccess)
         viewModel.logout(api)
         userPreferences.clear()
         requireActivity().startNewActivity(AuthActivity::class.java)
     }
-
 
     abstract fun getViewModel(): Class<VM>
 

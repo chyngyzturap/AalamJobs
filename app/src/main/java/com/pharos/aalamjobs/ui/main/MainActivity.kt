@@ -18,5 +18,5 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController = navHostFragment.navController
 
         nav_bottom.setupWithNavController(navController)
-        }
     }
+}

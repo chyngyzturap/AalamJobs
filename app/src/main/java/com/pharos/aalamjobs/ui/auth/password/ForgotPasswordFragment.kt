@@ -24,18 +24,13 @@ import kotlinx.android.synthetic.main.fragment_forgot_password.*
 import okhttp3.ResponseBody
 import java.util.concurrent.TimeUnit
 
-class ForgotPasswordFragment :BaseFragment<AuthViewModel, FragmentForgotPasswordBinding, AuthRepository>(),
+class ForgotPasswordFragment :
+    BaseFragment<AuthViewModel, FragmentForgotPasswordBinding, AuthRepository>(),
     LoginListener {
-
-    private var mCallbacksClient: PhoneAuthProvider.OnVerificationStateChangedCallbacks? = null
-    private var mResendingTokenClient: PhoneAuthProvider.ForceResendingToken? = null
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     lateinit var auth: FirebaseAuth
     lateinit var storedVerificationId: String
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
-
-    private var userPhone = ""
-    private var userId = 0
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -55,34 +50,36 @@ class ForgotPasswordFragment :BaseFragment<AuthViewModel, FragmentForgotPassword
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    )= FragmentForgotPasswordBinding.inflate(inflater, container, false)
+    ) = FragmentForgotPasswordBinding.inflate(inflater, container, false)
 
-    override fun getFragmentRepository() = AuthRepository (
+    override fun getFragmentRepository() = AuthRepository(
         remoteDataSource.buildApiWithoutToken(AuthApi::class.java), userPreferences
-        )
+    )
 
     override fun isUserExists(available: Boolean) {
-        TODO("Not yet implemented")
     }
 
     override fun signInFail(errorCode: ResponseBody?, code: Int?) {
-        TODO("Not yet implemented")
+    }
+
+    override fun checkSuccess() {
+    }
+
+    override fun checkInFail(error: String?) {
     }
 
     override fun userDataSavedLogin() {
-        TODO("Not yet implemented")
     }
 
     override fun loginSuccess(loginResponse: LoginResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun loginFail(code: Int?) {
-        TODO("Not yet implemented")
     }
 
     private fun signInWithPhone(authCredential: PhoneAuthCredential) {
-        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhoneNumber.text.toString().trim()
+        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+            .trim() + binding.etPhoneNumber.text.toString().trim()
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener {
             if (it.isSuccessful)
@@ -97,7 +94,6 @@ class ForgotPasswordFragment :BaseFragment<AuthViewModel, FragmentForgotPassword
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 signInWithPhone(credential)
-//                Toast.makeText(requireContext(), "Success + $credential", Toast.LENGTH_SHORT).show()
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
@@ -110,33 +106,37 @@ class ForgotPasswordFragment :BaseFragment<AuthViewModel, FragmentForgotPassword
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
                 super.onCodeSent(verificationId, token)
-
                 Log.d("TAG", "onCodeSent:$verificationId")
                 storedVerificationId = verificationId
                 resendToken = token
-                val phone = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhoneNumber.text.toString().trim()
-
+                val phone = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+                    .trim() + binding.etPhoneNumber.text.toString().trim()
                 val bundle = Bundle()
                 bundle.putString("storedVerificationId", storedVerificationId)
                 bundle.putString("phone", phone)
-
-                findNavController().navigate(R.id.action_forgotPasswordFragment_to_passwordOtpFragment, bundle)
+                findNavController().navigate(
+                    R.id.action_forgotPasswordFragment_to_passwordOtpFragment,
+                    bundle
+                )
             }
         }
     }
 
     private fun getOtp() {
-
-        val phone = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etPhoneNumber.text.toString().trim()
+        val phone = "+" + binding.etPhoneCode.selectedCountryCode.toString()
+            .trim() + binding.etPhoneNumber.text.toString().trim()
         if (phone.isNotEmpty()) {
             progressbar.visible(true)
             sendVerificationCode(phone)
         } else {
             progressbar.visible(false)
-            Toast.makeText(requireContext(), "Enter mobile number", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.enter_mobile_number),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
-
 
     private fun sendVerificationCode(number: String) {
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -149,10 +149,7 @@ class ForgotPasswordFragment :BaseFragment<AuthViewModel, FragmentForgotPassword
     }
 
     private fun initUI() {
-
         initCallbackClient()
         getOtp()
-
     }
-
 }

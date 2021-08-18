@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp"
-    tools:context=".ui.cv.AchievementsFragment">
+    tools:context=".ui.cv.jobapplicationform.AchievementsFragment">
 
     <RelativeLayout
         android:id="@+id/experience_container"
@@ -141,13 +140,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:endIconMode="custom"
                 android:fontFamily="@font/nunito"
                 android:textSize="14sp"
+                android:hint="@string/your_website_or_portfolio_links"
                 app:errorEnabled="true"
-                app:helperTextTextColor="#D80027">
+                app:helperText="@string/press_icon"
+                app:helperTextTextColor="#505050">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:drawableStart="@drawable/vector_attach_link"
                     android:id="@+id/et_links"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -157,11 +159,21 @@
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_links"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_links"/>
+
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@+id/tv_links"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/chip_group_links"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="clear_text"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:endIconMode="custom"
                 app:errorEnabled="true"
+                app:helperText="@string/press_icon"
+                app:helperTextTextColor="#505050"
                 android:id="@+id/tv_skills"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,15 +188,25 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_skills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_skills"/>
+
             <com.google.android.material.textfield.TextInputLayout
+                app:startIconDrawable="@drawable/vector_attach_link"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 android:id="@+id/tv_achievements"
                 android:layout_width="match_parent"
+                app:endIconDrawable="@drawable/vector_add_plus"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_skills"
-                android:layout_marginTop="15dp"
+                android:layout_below="@id/chip_group_skills"
+                app:endIconMode="custom"
+                android:layout_marginTop="10dp"
+                app:helperText="@string/press_icon"
+                app:helperTextTextColor="#505050"
                 android:fontFamily="@font/nunito"
                 android:hint="@string/txt_achievements"
                 android:textSize="14sp" >
@@ -198,6 +220,12 @@
                     android:layout_marginTop="6dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_achievements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_achievements"/>
 
         </RelativeLayout>
 

@@ -10,12 +10,21 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    signingConfigs{
+        Prod {
+            keyAlias 'key_aalamjobs'
+            keyPassword 'aalamjobs.2021'
+            storeFile file('key/key_store.jks')
+            storePassword 'aalamjobs.2021'
+        }
+    }
+
     defaultConfig {
         applicationId "com.pharos.aalamjobs"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.3"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -25,6 +34,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.Prod
         }
     }
 
@@ -161,4 +171,7 @@ dependencies {
     //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation "androidx.activity:activity-ktx:1.2.0-alpha06"
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 }

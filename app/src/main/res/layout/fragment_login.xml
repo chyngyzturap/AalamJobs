@@ -28,10 +28,20 @@
             android:layout_marginTop="19dp"
             android:layout_marginBottom="40dp" />
 
+        <RelativeLayout
+            android:layout_below="@id/tv_title"
+            android:id="@+id/username_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/phone_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <com.google.android.material.textfield.TextInputLayout
 
                 android:layout_toEndOf="@id/et_phone_code"
-                android:layout_below="@id/tv_title"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
@@ -42,7 +52,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="53dp"
                     android:layout_below="@id/tv_title"
                     android:hint="@string/txt_register_phonenumber"
                     android:inputType="phone"
@@ -50,42 +60,92 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.hbb20.CountryCodePicker
+                app:ccp_arrowSize="12dp"
+                android:id="@+id/et_phone_code"
+                android:lines="1"
+                android:inputType="phone"
+                app:ccp_textSize="14sp"
+                android:layout_marginTop="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_defaultNameCode="KG"
+                app:ccp_showNameCode="false"
+                android:fontFamily="@font/nunito"
+                />
 
-        <com.hbb20.CountryCodePicker
-            app:ccp_arrowSize="12dp"
-            android:id="@+id/et_phone_code"
-            android:lines="1"
-            android:inputType="phone"
-            app:ccp_textSize="14sp"
-            android:layout_marginTop="14dp"
-            android:layout_below="@id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:ccp_defaultNameCode="KG"
-            app:ccp_showNameCode="false"
-            android:fontFamily="@font/nunito"
-            />
+        </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@id/tv_phone"
+                android:visibility="gone"
+                android:id="@+id/tv_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="password_toggle"
-                app:errorEnabled="true"
-                android:id="@+id/tv_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/your_email"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/login_container"
+            android:layout_below="@id/username_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_alignParentEnd="true"
+            android:textSize="12sp"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login_with_email"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_login_with_email" />
+        <TextView
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:textSize="12sp"
+            android:fontFamily="@font/nunito_bold"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login_with_phone"
+            android:layout_marginBottom="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_login_with_phone" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_container"
+            android:layout_marginTop="-17dp"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
 
 
             <com.google.android.material.textfield.TextInputEditText
-                android:textSize="14sp"
-                android:inputType="textPassword"
-                android:hint="@string/txt_login_password"
-                android:layout_below="@id/et_login"
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="@string/txt_login_password"
+                android:inputType="textPassword"
+                android:textSize="14sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_alignParentEnd="true"

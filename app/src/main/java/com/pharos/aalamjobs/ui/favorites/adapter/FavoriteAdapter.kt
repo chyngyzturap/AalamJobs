@@ -1,5 +1,6 @@
 package com.pharos.aalamjobs.ui.favorites.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,12 +15,6 @@ class FavoriteAdapter(
 ) : ListAdapter<FavJobs, FavoriteAdapter.JobsViewHolder>(DIFF) {
 
     private var _binding: JobsItemBinding? = null
-    private var favJobsList: MutableList<FavJobs> = mutableListOf()
-
-    public fun addData(data: MutableList<FavJobs>) {
-        favJobsList = data
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobsViewHolder {
         _binding = JobsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,10 +25,6 @@ class FavoriteAdapter(
         holder.onBind(position)
     }
 
-//    override fun getItemCount(): Int {
-//        return jobsList.size
-//    }
-
     fun getItemAtPos(position: Int): FavJobs {
         return getItem(position)
     }
@@ -41,22 +32,18 @@ class FavoriteAdapter(
     inner class JobsViewHolder(private val binding: JobsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun onBind(position: Int) {
             val current = getItemAtPos(position)
 
-
             if (current.favorite){
-
-
             binding.jobTitle.text = current.title
-            binding.jobNameCompany.text = current.owner.username
+            binding.jobNameCompany.text = current.organization.name
             binding.jobNameLocation.text = current.city.name.en.toString() + ", " +
                     current.city.country.name.en
             binding.jobsDate.text = current.published_date.split("T")[0]
-            binding.jobsSalary.text =
-                current.salary.min.toString() + "-" + current.salary.max + current.salary.currency.value
-
-
+                binding.jobsSalary.text =
+                    current.salary.min.toString() + "-" + current.salary.max + current.currency.sign
 
             if (current.favorite){
                 binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_filled)
@@ -64,8 +51,6 @@ class FavoriteAdapter(
             } else {
                 binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
             }
-
-
 
             binding.ivJobFavorite.setOnClickListener{
                 current.favorite
@@ -82,11 +67,9 @@ class FavoriteAdapter(
             }
             }
 
-
             binding.root.setOnClickListener {
                 listener.onJobClick(current.id)
             }
-
         }
     }
 
@@ -99,7 +82,6 @@ class FavoriteAdapter(
             override fun areContentsTheSame(oldItem: FavJobs, newItem: FavJobs): Boolean {
                 return oldItem.title == newItem.title
             }
-
         }
     }
 

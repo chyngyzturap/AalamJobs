@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "other_languages_table2")
 data class OtherLanguages2(
-    val name: String,
+    val name: String?,
     val listening: String?,
     val reading: String?,
     val writing: String?,

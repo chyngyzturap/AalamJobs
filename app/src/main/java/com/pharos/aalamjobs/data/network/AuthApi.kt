@@ -14,14 +14,13 @@ import retrofit2.http.*
 
 
 interface AuthApi {
-
-    @POST("/auth/jwt/create/")
+    @POST("/api/auth/jwt/create/")
     suspend fun login(@Body tokenObtainPair: TokenObtainPair) : LoginResponse
 
-    @POST("/auth/users/")
+    @POST("/api/auth/users/")
     suspend fun createUser(@Body createUserModel: CreateUserModel): LoginResponse
 
-    @PATCH("/auth/users/me/")
+    @PATCH("/api/auth/users/me/")
     @Multipart
     suspend fun updateProfile(
         @Part photo: MultipartBody.Part?,
@@ -32,15 +31,10 @@ interface AuthApi {
         @Part("country") country: RequestBody?,
     )
 
-    @GET("/auth/users/me/")
+    @GET("/api/auth/users/me/")
     suspend fun getProfileInfo(): UserResponse
 
-
-    @FormUrlEncoded
-    @POST("upload_image.php")
-    fun uploadImage(@Field("photo") encodedImage: String?)
-
-    @POST("/auth/users/set_password/")
+    @POST("/api/auth/users/set_password/")
     suspend fun changePassword(@Body changePasswordModel: ChangePasswordModel)
 
     @POST("/api/users/reset/password/")

@@ -6,23 +6,28 @@ import androidx.datastore.preferences.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class UserPreferences (
+class UserPreferences(
     context: Context
-        ){
+) {
     private val applicationContext = context.applicationContext
     private val dataStore: DataStore<Preferences> = applicationContext.createDataStore(
         name = "my_data_store"
     )
 
     val tokenAccess: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_AUTH]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_AUTH]
+        }
+
+    val tokenRefresh: Flow<String?>
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_AUTH_REFRESH]
+        }
 
     val email: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_AUTH_EMAIL]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_AUTH_EMAIL]
+        }
 
     val id: Flow<Int?>
         get() = dataStore.data.map { preferences ->
@@ -35,46 +40,52 @@ class UserPreferences (
         }
 
     val language: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_LANGUAGE]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_LANGUAGE]
+        }
 
     val photo: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_PHOTO]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_PHOTO]
+        }
 
     val city: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_CITY]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_CITY]
+        }
 
     val country: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_COUNTRY]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_COUNTRY]
+        }
 
     val position: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_POSITION]
-    }
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_POSITION]
+        }
 
     val fullname: Flow<String?>
-    get() = dataStore.data.map { preferences ->
-        preferences[KEY_FULLNAME]
-    }
-    
-    suspend fun saveAuthToken(tokenAccess: String/*, tokenRefresh: String*/){
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_FULLNAME]
+        }
+
+    suspend fun saveAuthToken(tokenAccess: String, tokenRefresh: String) {
         dataStore.edit { preferences ->
             preferences[KEY_AUTH] = tokenAccess
-            /*preferences[KEY_AUTH] = tokenRefresh*/
-
+            preferences[KEY_AUTH_REFRESH] = tokenRefresh
+        }
+    }
+    suspend fun saveAccessToken(tokenAccess: String) {
+        dataStore.edit { preferences ->
+            preferences[KEY_AUTH] = tokenAccess
         }
     }
 
 
-    suspend fun saveUser(email: String, id: Int, username: String, photo: String,
-    city: String, country: String, position: String, fullname: String){
+    suspend fun saveUser(
+        email: String, id: Int, username: String, photo: String,
+        city: String, country: String, position: String, fullname: String
+    ) {
         dataStore.edit { preferences ->
             preferences[KEY_AUTH_USERNAME] = username
             preferences[KEY_AUTH_ID] = id
@@ -88,13 +99,13 @@ class UserPreferences (
     }
 
 
-    suspend fun saveLang(lang: String){
+    suspend fun saveLang(lang: String) {
         dataStore.edit { preferences ->
             preferences[KEY_LANGUAGE] = lang
         }
     }
 
-    suspend fun clear(){
+    suspend fun clear() {
         dataStore.edit { preferences ->
             preferences.clear()
         }
@@ -102,6 +113,7 @@ class UserPreferences (
 
     companion object {
         private val KEY_AUTH = preferencesKey<String>("key_auth")
+        private val KEY_AUTH_REFRESH = preferencesKey<String>("key_auth_refresh")
         private val KEY_AUTH_EMAIL = preferencesKey<String>("key_auth_email")
         private val KEY_AUTH_ID = preferencesKey<Int>("key_auth_id")
         private val KEY_AUTH_USERNAME = preferencesKey<String>("key_auth_username")

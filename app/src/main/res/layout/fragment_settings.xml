@@ -60,8 +60,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profile_settings"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_photo_profile" />
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/tv_settings_profile_full_name"
@@ -71,7 +70,6 @@
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/iv_profile_settings"
             android:fontFamily="@font/nunito"
-            android:text="@string/full_name"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -88,6 +86,7 @@
         android:paddingHorizontal="20dp">
 
         <TextView
+           android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_language"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -106,6 +105,7 @@
             android:background="@color/browser_actions_bg_grey" />
 
         <TextView
+            android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_about_us"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -125,6 +125,7 @@
             android:background="@color/browser_actions_bg_grey" />
 
         <TextView
+            android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_change_password"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -144,6 +145,7 @@
             android:background="@color/browser_actions_bg_grey" />
 
         <TextView
+            android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_contact_us"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -163,6 +165,7 @@
             android:background="@color/browser_actions_bg_grey" />
 
         <TextView
+            android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_help"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -182,6 +185,7 @@
             android:background="@color/browser_actions_bg_grey" />
 
         <TextView
+            android:textColor="#7A7A7A"
             android:id="@+id/tv_settings_Logout"
             android:layout_width="match_parent"
             android:layout_height="60dp"

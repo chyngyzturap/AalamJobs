@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp"
-    tools:context=".ui.cv.WorkExperienceFragment">
+    tools:context=".ui.cv.jobapplicationform.WorkExperienceFragment">
 
     <RelativeLayout
         android:id="@+id/experience_container"
@@ -86,7 +85,7 @@
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
                     android:textColor="#5A5A67"
-                    android:text="@string/txt_links_2" />
+                    android:text="@string/txt_achievements" />
 
                 <Button
                     android:textAllCaps="false"
@@ -137,7 +136,8 @@
             android:layout_marginTop="16dp"
             >
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/work_exp_info_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -244,13 +244,15 @@
                 android:textSize="14sp" >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="date"
                 android:textSize="14dp"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:id="@+id/et_date_from"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_date_from"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                 />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -271,7 +273,8 @@
                 android:textSize="14sp" >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="date"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:textSize="14sp"
                 android:id="@+id/et_date_to"
                 android:layout_width="match_parent"
@@ -280,6 +283,15 @@
                 android:layout_marginTop="6dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:textColor="@color/colorGreenBrand"
+                android:id="@+id/checkbox_date_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/i_am_currently_working_on_this_position"
+                android:textSize="12sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -309,12 +321,16 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="clear_text"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/press_icon"
+                app:helperTextTextColor="#505050"
                 app:errorEnabled="true"
                 android:id="@+id/tv_responsibilities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_position"
+
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/nunito"
                 android:hint="@string/txt_responsibilities2"
@@ -330,11 +346,18 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_responsibilities"/>
 
-        </RelativeLayout>
+
+        </LinearLayout>
 
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:visibility="gone"
             android:id="@+id/work_exp_info_container_2"
             android:layout_width="match_parent"
@@ -432,7 +455,8 @@
                 android:textSize="14sp" >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="date"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:textSize="14dp"
                 android:id="@+id/et_date_from_2"
                 android:layout_width="match_parent"
@@ -459,7 +483,8 @@
                 android:textSize="14sp" >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="date"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:textSize="14sp"
                 android:id="@+id/et_date_to_2"
                 android:layout_width="match_parent"
@@ -468,6 +493,15 @@
                 android:layout_marginTop="6dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:textColor="@color/colorGreenBrand"
+                android:id="@+id/checkbox_date_to_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/i_am_currently_working_on_this_position"
+                android:textSize="14sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -497,7 +531,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="clear_text"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/press_icon"
+                app:helperTextTextColor="#505050"
                 app:errorEnabled="true"
                 android:id="@+id/tv_responsibilities_2"
                 android:layout_width="match_parent"
@@ -518,10 +555,17 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        </RelativeLayout>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_responsibilities_2"/>
+
+        </LinearLayout>
 
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:visibility="gone"
             android:id="@+id/work_exp_info_container_3"
             android:layout_width="match_parent"
@@ -619,8 +663,9 @@
                 android:textSize="14sp" >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="date"
-                android:textSize="14dp"
+                android:editable="false"
+                tools:ignore="Deprecated"
+                android:textSize="14sp"
                 android:id="@+id/et_date_from_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -646,7 +691,8 @@
                 android:textSize="14sp" >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="date"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:textSize="14sp"
                 android:id="@+id/et_date_to_3"
                 android:layout_width="match_parent"
@@ -655,6 +701,15 @@
                 android:layout_marginTop="6dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:textColor="@color/colorGreenBrand"
+                android:id="@+id/checkbox_date_to_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="@string/i_am_currently_working_on_this_position"
+                android:textSize="14sp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -684,7 +739,10 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="clear_text"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/vector_add_plus"
+                app:helperText="@string/press_icon"
+                app:helperTextTextColor="#505050"
                 app:errorEnabled="true"
                 android:id="@+id/tv_responsibilities_3"
                 android:layout_width="match_parent"
@@ -705,9 +763,13 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_responsibilities_3"/>
 
-
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>

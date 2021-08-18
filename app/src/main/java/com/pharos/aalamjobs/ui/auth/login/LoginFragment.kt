@@ -3,7 +3,6 @@ package com.pharos.aalamjobs.ui.auth.login
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -12,7 +11,6 @@ import com.pharos.aalamjobs.data.model.TokenObtainPair
 import com.pharos.aalamjobs.data.network.AuthApi
 import com.pharos.aalamjobs.data.network.Resource
 import com.pharos.aalamjobs.data.repository.AuthRepository
-import com.pharos.aalamjobs.data.responses.LoginResponse
 import com.pharos.aalamjobs.data.responses.UserResponse
 import com.pharos.aalamjobs.databinding.FragmentLoginBinding
 import com.pharos.aalamjobs.ui.auth.AuthViewModel
@@ -26,59 +24,82 @@ import kotlinx.coroutines.launch
 
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>(),
-UserListener{
-
+    UserListener {
+    private var usernameIntent: String? = ""
+    private var passwordIntent: String? = ""
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
+        fastLoginAfterReg()
         binding.progressbar.visible(false)
-//        binding.buttonLogin.enable(false)
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             binding.progressbar.visible(it is Resource.Loading)
-
             when (it) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
-                        viewModel.saveAuthToken(it.value.access)
-                        //TODO write logic about if user was in other screen open that screen
+                        viewModel.saveAuthToken(it.value.access, it.value.refresh)
                         requireActivity().startNewActivity(MainActivity::class.java)
                     }
                 }
-                is Resource.Failure -> handleApiError(it) { login() }
+
+                is Resource.Failure -> handleApiError(it) {
+                    login()
+                }
             }
         })
 
-        binding.etLogin.addTextChangedListener {
-            val username = binding.etLogin.text.toString().trim()
-//            binding.buttonLogin.enable(username.isNotEmpty() && it.toString().isNotEmpty())
-
-        }
-
         binding.tvSignup.setOnClickListener {
-
             findNavController().navigate(R.id.action_nav_login_to_nav_register)
         }
-
         binding.buttonLogin.setOnClickListener {
             login()
         }
 
-binding.tvForgotPassword.setOnClickListener {
-    findNavController().navigate(R.id.action_nav_login_to_forgotPasswordFragment)
-}
+        binding.tvForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_login_to_forgotPasswordFragment)
+        }
+
+        binding.tvLoginWithEmail.setOnClickListener {
+            binding.phoneContainer.visible(false)
+            binding.tvEmail.visible(true)
+            binding.tvLoginWithPhone.visible(true)
+            binding.tvLoginWithEmail.visible(false)
+        }
+
+        binding.tvLoginWithPhone.setOnClickListener {
+            binding.tvEmail.visible(false)
+            binding.phoneContainer.visible(true)
+            binding.tvLoginWithEmail.visible(true)
+            binding.tvLoginWithPhone.visible(false)
+        }
+    }
+
+    private fun fastLoginAfterReg() {
+        usernameIntent = arguments?.getString("username")
+        passwordIntent = arguments?.getString("password")
+        if (usernameIntent != "" && passwordIntent != ""
+            && usernameIntent != null && passwordIntent != null
+        ) {
+            val tokenObtainPairPhone = TokenObtainPair(usernameIntent, passwordIntent)
+            viewModel.login(tokenObtainPairPhone)
+        }
     }
 
     private fun login() {
-        val username = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + binding.etLogin.text.toString().trim()
+        val email = binding.etEmail.text.toString().trim()
+        val phoneNumber = binding.etLogin.text.toString().trim()
+        val phone = "+" + binding.etPhoneCode.selectedCountryCode.toString().trim() + phoneNumber
         val password = binding.etPassword.text.toString().trim()
-        val tokenObtainPair = TokenObtainPair(username, password)
-        viewModel.login(tokenObtainPair)
-//        viewModel.login2(tokenObtainPair, 2)
-//        requireActivity().startNewActivity(MainActivity::class.java)
 
+        if (phoneNumber != "") {
+            val tokenObtainPairPhone = TokenObtainPair(phone, password)
+            viewModel.login(tokenObtainPairPhone)
+        }
+        if (email != "") {
+            val tokenObtainPairEmail = TokenObtainPair(email, password)
+            viewModel.login(tokenObtainPairEmail)
+        }
     }
 
     override fun getViewModel() = AuthViewModel::class.java
@@ -92,33 +113,9 @@ binding.tvForgotPassword.setOnClickListener {
         remoteDataSource.buildApi(AuthApi::class.java), userPreferences
     )
 
-
-    private fun initUserData(loginResponse: LoginResponse?){
-        val username = loginResponse?.username
-        val token = loginResponse?.access
-
-        if (username != null && token != null){
-            requireActivity().startNewActivity(MainActivity::class.java)
-        }
-    }
-
     override fun setUserData(userResponse: UserResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun dataError(code: Int?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun setUserId(id: Int?, logo: String?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updateUserSuccess() {
-        TODO("Not yet implemented")
-    }
-
-    override fun quitDone() {
-        TODO("Not yet implemented")
     }
 }

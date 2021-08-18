@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.pharos.aalamjobs.data.responses.CityResponseItem
+import com.pharos.aalamjobs.data.responses.dialog.CityResponseItem
 import com.pharos.aalamjobs.databinding.ListItemBinding
 
 class CityAdapter(
@@ -23,7 +23,6 @@ class CityAdapter(
         holder.onBind(position)
     }
 
-
     fun getItemAtPos(position: Int): CityResponseItem {
         return getItem(position)
     }
@@ -33,23 +32,27 @@ class CityAdapter(
 
         fun onBind(position: Int) {
             val current = getItemAtPos(position)
-
             binding.tvCounter.text = current.name.en
 
             binding.root.setOnClickListener {
                 listener.onCityClick(position)
             }
-
         }
     }
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<CityResponseItem>() {
-            override fun areItemsTheSame(oldItem: CityResponseItem, newItem: CityResponseItem): Boolean {
+            override fun areItemsTheSame(
+                oldItem: CityResponseItem,
+                newItem: CityResponseItem
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: CityResponseItem, newItem: CityResponseItem): Boolean {
+            override fun areContentsTheSame(
+                oldItem: CityResponseItem,
+                newItem: CityResponseItem
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
 

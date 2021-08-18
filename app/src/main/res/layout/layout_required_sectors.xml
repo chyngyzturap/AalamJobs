@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="30dp"
+    android:paddingVertical="50dp"
+    android:paddingHorizontal="28dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="16sp"
+        android:fontFamily="@font/nunito"
+        android:gravity="center_horizontal"
+        android:id="@+id/tv_title_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You haven’t filled all sections."/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/nunito"
+        android:gravity="center_horizontal"
+        android:id="@+id/tv_title_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please complete "
+        android:layout_marginBottom="35dp"/>
+
+    <Button
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_navigate_personals"
+        android:layout_marginTop="5dp"
+        android:text="@string/tab_personals"
+        style="@style/style_btn_green2"/>
+    <Button
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_navigate_contacts"
+        android:layout_marginTop="5dp"
+        android:text="@string/tab_contacts"
+        style="@style/style_btn_green2"/>
+    <Button
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_navigate_education"
+        android:layout_marginTop="5dp"
+        android:text="@string/tab_education"
+        style="@style/style_btn_green2"/>
+    <Button
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_navigate_language"
+        android:layout_marginTop="5dp"
+        android:text="@string/tab_language"
+        style="@style/style_btn_green2"/>
+    <Button
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_navigate_experience"
+        android:layout_marginTop="5dp"
+        android:text="@string/tab_experience"
+        style="@style/style_btn_green2"/>
+    <Button
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/btn_navigate_requirements"
+        android:layout_marginTop="5dp"
+        android:text="@string/tab_job_requirements"
+        style="@style/style_btn_green2"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

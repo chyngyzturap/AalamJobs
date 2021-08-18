@@ -7,17 +7,55 @@
     tools:context=".ui.resume.CvWebPreviewActivity">
 
     <WebView
+        android:layout_below="@id/jobs_toolbar"
         android:id="@+id/web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/jobs_toolbar"
+        android:background="@color/colorGreenBrand"
+        android:elevation="5dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_backpressed"
+            android:padding="8dp"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/vector_backpressed_white"
+            android:layout_gravity="end"
+            android:layout_marginRight="6dp" />
+
+        <Button
+            android:id="@+id/btn_print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/colorGreenBrand"
+            android:drawableLeft="@drawable/ic_picture_as_pdf"
+            android:drawableRight="@drawable/ic_print"
+            android:text="@string/save_pdf_print"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <Button
         style="@style/style_btn_green"
-        android:id="@+id/btn_print"
+        android:id="@+id/btn_send_cv"
         android:layout_marginBottom="20dp"
-        android:drawableLeft="@drawable/ic_picture_as_pdf"
-        android:drawableRight="@drawable/ic_print"
-        android:text="@string/save_pdf_print"
+        android:text="@string/txt_send_cv"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

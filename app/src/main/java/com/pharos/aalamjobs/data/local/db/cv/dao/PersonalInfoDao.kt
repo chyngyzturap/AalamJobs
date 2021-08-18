@@ -1,12 +1,17 @@
 package com.pharos.aalamjobs.data.local.db.cv.dao
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.pharos.aalamjobs.data.local.db.cv.entities.LangLocale
 import com.pharos.aalamjobs.data.local.db.cv.entities.PersonalInfo
 
 @Dao
 interface PersonalInfoDao {
     //PersonalInfo
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLangLocale(langLocale: LangLocale)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPersonalInfo(personalInfo: PersonalInfo)
@@ -18,36 +23,40 @@ interface PersonalInfoDao {
     suspend fun deleteAllFromPersonal()
 
     @Query("SELECT photo FROM personal_info_table")
-    fun getImageinByte(): String
+    fun getPhoto(): Uri
     //    fun getFirstName(): LiveData<String>
 
     @Query("SELECT firstname FROM personal_info_table")
-    fun getFirstName(): String
+    fun getFirstName(): String?
 //    fun getFirstName(): LiveData<String>
 
 
     @Query("SELECT lastname FROM personal_info_table")
-    fun getLastName(): String
+    fun getLastName(): String?
 //    fun getLastName(): LiveData<String>
 
     @Query("SELECT middlename FROM personal_info_table")
-    fun getMiddleName(): String
+    fun getMiddleName(): String?
 //    fun getMiddleName(): LiveData<String>
 
     @Query("SELECT birthdate FROM personal_info_table")
-    fun getBirthDate(): String
+    fun getBirthDate(): String?
 //    fun getBirthDate(): LiveData<String>
 
     @Query("SELECT citizenship FROM personal_info_table")
-    fun getCitizenship(): String
+    fun getCitizenship(): String?
 //    fun getCitizenship(): LiveData<String>
 
     @Query("SELECT marital_status FROM personal_info_table")
-    fun getMaritalStatus(): String
+    fun getMaritalStatus(): String?
 //    fun getMaritalStatus(): LiveData<String>
 
     @Query("SELECT gender FROM personal_info_table")
-    fun getGender(): String
+    fun getGender(): String?
+//    fun getGender(): LiveData<String>
+
+    @Query("SELECT locale FROM lang_locale_table")
+    fun getLocale(): String?
 //    fun getGender(): LiveData<String>
 
     @Query("SELECT * FROM personal_info_table")

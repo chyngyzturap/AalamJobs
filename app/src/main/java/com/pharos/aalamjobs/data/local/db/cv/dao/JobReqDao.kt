@@ -12,7 +12,7 @@ interface JobReqDao {
     suspend fun deleteAllFromJobReq()
 
     @Query("SELECT salary_expectations FROM job_req_table")
-    fun getSalaryExpect(): Int
+    fun getSalaryExpect(): Int?
 
     @Delete
     suspend fun deleteJobReqInfo(jobRequirements: JobRequirements)
@@ -33,15 +33,15 @@ interface JobReqDao {
     suspend fun deletePersonalInfo(personalInfo: PersonalInfo)
 
     @Query("SELECT employment_type FROM job_req_table")
-    fun getEmploymentTypeExpect(): Int
+    fun getEmploymentTypeExpect(): Int?
 
     @Query("SELECT position FROM job_req_table")
-    fun getPositionExpect(): String
+    fun getPositionExpect(): String?
 
     @Query("SELECT date_can_start FROM job_req_table")
-    fun getDateCanStartExpect(): String
+    fun getDateCanStartExpect(): String?
 
     @Query("SELECT bio FROM job_req_table")
-    fun getBio(): String
+    fun getBio(): String?
 
 }

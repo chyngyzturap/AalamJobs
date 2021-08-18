@@ -17,37 +17,38 @@ interface ContactInfoDao {
     suspend fun deleteContactInfo(contactInfo: ContactInfo)
 
     @Query("SELECT phone FROM contact_info_table")
-    fun getPhone(): String
+    fun getPhone(): String?
 
     @Query("SELECT email FROM contact_info_table")
-    fun getEmail(): String
+    fun getEmail(): String?
 
     @Query("SELECT current_country FROM contact_info_table")
-    fun getCurrentCountry(): String
+    fun getCurrentCountry(): String?
 
     @Query("SELECT current_city FROM contact_info_table")
-    fun getCurrentCity(): String
+    fun getCurrentCity(): String?
 
     @Query("SELECT living_address FROM contact_info_table")
-    fun getLivingAddress(): String
+    fun getLivingAddress(): String?
 
     //Social
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+
     suspend fun insertSocial(social: Social)
 
     @Query("SELECT whatsapp FROM social_table")
-    fun getWhatsapp(): String
+    fun getWhatsapp(): String?
 
     @Query("SELECT telegram FROM social_table")
-    fun getTelegram(): String
+    fun getTelegram(): String?
 
     @Query("SELECT facebook FROM social_table")
-    fun getFacebook(): String
+    fun getFacebook(): String?
 
     @Query("SELECT twitter FROM social_table")
-    fun getTwitter(): String
+    fun getTwitter(): String?
 
     @Query("SELECT linkedin FROM social_table")
-    fun getLinkedIn(): String
+    fun getLinkedIn(): String?
 
 }

@@ -121,7 +121,7 @@
     <string name="tab_experience">Deneyim</string>
     <string name="tab_job_requirements">Gereksinimler</string>
     <string name="txt_job_application_form">İş başvuru formu</string>
-    <string name="specialization">Specialization</string>
+    <string name="specialization">Uzmanlık</string>
     <string name="city">Kent</string>
     <string name="country">ülke</string>
     <string name="links">Bağlantılar</string>
@@ -153,6 +153,31 @@
     <string name="city_country">"Şehir, ülke  "</string>
     <string name="cancel">"İptal etmek "</string>
     <string name="please_sign_up_to_get_access">"Erişim almak için lütfen kaydolun "</string>
+    <string name="currency">Para birimi</string>
+    <string name="login_with_email">E-posta ile giriş yapın</string>
+    <string name="login_with_phone">Telefonla giriş yapın</string>
+    <string name="please_choose_favorites_from_list">" Lütfen listeden favorilerinizi seçin"</string>
+    <string name="please_write_your_resume">" Lütfen özgeçmişinizi yazın"</string>
+    <string name="please_log_in_to_add_profile_info">Profil bilgisi eklemek için lütfen giriş yapın</string>
+    <string name="you_have_not_sent_your_resume_yet">Özgeçmişinizi henüz göndermediniz</string>
+    <string name="till_now">Till now</string>
+    <string name="your_website_or_portfolio_links">Your webWeb siteniz veya portföy bağlantılarınızsite or portfolio links</string>
+    <string name="press_icon">etiket eklemek için simgeye tıklayın</string>
+    <string name="i_am_currently_working_on_this_position">Şu anda bu pozisyonda çalışıyorum</string>
+    <string name="password_length">Şifre 8\'den az olamaz</string>
+    <string name="password_numeric">Bu şifre tamamen sayısaldır</string>
+    <string name="already_exist">Bu telefon numarasına sahip kullanıcı zaten var</string>
+    <string name="exist_user">Bu telefon numarasına sahip kullanıcı zaten var</string>
+    <string name="share_via">Aracılığıyla paylaş...</string>
+    <string name="enter_mobile_number">Cep telefonu numarasını girin</string>
+    <string name="pwd_changed_success">Tebrikler! Şifreniz başarıyla değiştirildi</string>
+    <string name="pwd_mismatch">Şifreler uyuşmazlığı</string>
+    <string name="invalid_otp">Geçersiz OTP</string>
+    <string name="pwd_changed_succ">Parola başarıyla değiştirildi</string>
+    <string name="choose_lang">Dil seçiniz</string>
+    <string name="check_internet_connect">Lütfen internet bağlantınızı kontrol edin</string>
+    <string name="incorrect_email_pwd">Yanlış e-posta veya şifre girdiniz</string>
+    <string name="retry">Yeniden dene</string>
     <string-array name="marital_status">
         <item>Evli değil</item>
         <item>Evli</item>

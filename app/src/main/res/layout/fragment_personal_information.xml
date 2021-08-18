@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp"
-    tools:context=".ui.cv.PersonalInformationFragment">
+    tools:context=".ui.cv.jobapplicationform.PersonalInformationFragment">
 
     <RelativeLayout
         android:id="@+id/personal_container"
@@ -86,7 +85,7 @@
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
                     android:textColor="#5A5A67"
-                    android:text="@string/txt_links_2" />
+                    android:text="@string/txt_achievements" />
 
                 <Button
                     android:textAllCaps="false"
@@ -115,17 +114,34 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="40dp"
         >
+
         <TextView
+            android:layout_marginTop="20dp"
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp"
+            android:background="@drawable/bg_card_view"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/lang_change"
+            android:textColor="#4D4D4E"
+            android:fontFamily="@font/nunito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="@string/txt_choose_lang"/>
+
+        <TextView
+            android:layout_below="@id/lang_change"
             android:id="@+id/tv_title_pi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:fontFamily="@font/nunito"
             android:text="@string/txt_personal_information"
             android:textSize="14sp" />
 
         <ImageView
+            android:visibility="gone"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_developer_mode"
             android:id="@+id/open_room_data"
@@ -262,12 +278,14 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:lines="1"
                 android:textSize="14sp"
+                android:editable="false"
+                tools:ignore="Deprecated"
                 android:id="@+id/et_birth_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_birth_date"
                 android:layout_marginTop="6dp"
-                android:inputType="date" />
+                />
 
             </com.google.android.material.textfield.TextInputLayout>
 

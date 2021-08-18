@@ -20,6 +20,7 @@ data class Jobs(
     val requirements: List<String>,
     val responsibilities: List<String>,
     val salary: Salary,
+    val currency: Currency,
     val schedule: String,
     val start_date: String,
     val title: String,

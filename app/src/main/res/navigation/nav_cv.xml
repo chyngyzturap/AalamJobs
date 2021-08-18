@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/personalInformationFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.PersonalInformationFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.PersonalInformationFragment"
         android:label="fragment_personal_information"
         tools:layout="@layout/fragment_personal_information" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/contactInformationFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.ContactInformationFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.ContactInformationFragment"
         android:label="fragment_contact_information"
         tools:layout="@layout/fragment_contact_information" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/educationFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.EducationFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.EducationFragment"
         android:label="fragment_education"
         tools:layout="@layout/fragment_education" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/languagesFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.LanguagesFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.LanguagesFragment"
         android:label="fragment_languages"
         tools:layout="@layout/fragment_languages" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/workExperienceFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.WorkExperienceFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.WorkExperienceFragment"
         android:label="fragment_work_experience"
         tools:layout="@layout/fragment_work_experience" >
         <action
@@ -52,16 +52,20 @@
     </fragment>
     <fragment
         android:id="@+id/jobRequirementFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.JobRequirementFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.JobRequirementFragment"
         android:label="fragment_job_reqiurements"
         tools:layout="@layout/fragment_job_reqiurements" />
     <fragment
         android:id="@+id/linksFragment"
-        android:name="com.pharos.aalamjobs.ui.cv.AchievementsFragment"
+        android:name="com.pharos.aalamjobs.ui.cv.jobapplicationform.AchievementsFragment"
         android:label="fragment_links"
         tools:layout="@layout/fragment_achievements" >
         <action
             android:id="@+id/action_linksFragment_to_jobRequirementFragment"
             app:destination="@id/jobRequirementFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/requiredSectionsDialogFragment"
+        android:name="com.pharos.aalamjobs.utils.RequiredSectionsDialogFragment"
+        android:label="RequiredSectionsDialogFragment" />
 </navigation>

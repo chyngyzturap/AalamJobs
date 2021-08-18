@@ -18,7 +18,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 
-class ChangePasswordFragment : BaseFragment<AuthViewModel, FragmentChangePasswordBinding, AuthRepository>() {
+class ChangePasswordFragment :
+    BaseFragment<AuthViewModel, FragmentChangePasswordBinding, AuthRepository>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,17 +32,22 @@ class ChangePasswordFragment : BaseFragment<AuthViewModel, FragmentChangePasswor
             val confirmPwd = binding.etConfirmNewPassword.text.toString().trim()
             val changePasswordModel = ChangePasswordModel(currentPwd, newPwd)
 
-            if (newPwd == confirmPwd){
+            if (newPwd == confirmPwd) {
                 viewModel.changePassword(changePasswordModel)
                 binding.progressbar.visible(true)
-                Toast.makeText(requireContext(), "Password changed successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.pwd_changed_succ),
+                    Toast.LENGTH_SHORT
+                ).show()
                 findNavController().navigate(R.id.settingsFragment)
             } else {
-                Toast.makeText(requireContext(), "Passwords mismatch", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.pwd_mismatch),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
-
-
         }
     }
 
@@ -50,12 +56,11 @@ class ChangePasswordFragment : BaseFragment<AuthViewModel, FragmentChangePasswor
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    )= FragmentChangePasswordBinding.inflate(inflater, container, false)
+    ) = FragmentChangePasswordBinding.inflate(inflater, container, false)
 
-    override fun getFragmentRepository() : AuthRepository {
-        val token = runBlocking {userPreferences.tokenAccess.first() }
+    override fun getFragmentRepository(): AuthRepository {
+        val token = runBlocking { userPreferences.tokenAccess.first() }
         val api = remoteDataSource.buildApi(AuthApi::class.java, token)
         return AuthRepository(api, userPreferences)
     }
-
 }

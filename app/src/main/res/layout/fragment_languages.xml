@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     app:layout_editor_absoluteX="1dp"
     app:layout_editor_absoluteY="1dp"
-    tools:context=".ui.cv.LanguagesFragment">
+    tools:context=".ui.cv.jobapplicationform.LanguagesFragment">
 
     <RelativeLayout
         android:id="@+id/lang_container"
@@ -86,7 +86,7 @@
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/white"
                     android:textColor="#5A5A67"
-                    android:text="@string/txt_links_2" />
+                    android:text="@string/txt_achievements" />
 
                 <Button
                     android:textAllCaps="false"
@@ -172,8 +172,7 @@
                 app:errorEnabled="true"
                 app:endIconMode="custom"
                 app:endIconDrawable="@drawable/vector_add_plus"
-                app:helperText="@string/txt_required"
-                app:helperTextTextColor="#D80027"
+
                 android:id="@+id/tv_other"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

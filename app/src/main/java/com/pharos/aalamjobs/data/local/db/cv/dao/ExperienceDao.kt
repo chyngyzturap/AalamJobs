@@ -31,80 +31,80 @@ interface ExperienceDao {
     suspend fun deleteExperienceInfo(experience: Experience)
 
     @Query("SELECT company FROM experience_table")
-    fun getWorkCompany(): String
+    fun getWorkCompany(): String?
 
     @Query("SELECT date_from FROM experience_table")
-    fun getWorkDateFrom(): String
+    fun getWorkDateFrom(): String?
 
     @Query("SELECT date_to FROM experience_table")
-    fun getWorkDateTo(): String
+    fun getWorkDateTo(): String?
 
     @Query("SELECT position FROM experience_table")
-    fun getWorkPosition(): String
+    fun getWorkPosition(): String?
 
     @Query("SELECT responsibilities FROM experience_table")
-    fun getWorkResponsibilities(): String
+    fun getWorkResponsibilities(): String?
 
     @Query("SELECT city FROM experience_table")
-    fun getWorkCity(): String
+    fun getWorkCity(): String?
 
     @Query("SELECT country FROM experience_table")
-    fun getWorkCountry(): String
+    fun getWorkCountry(): String?
 
 
     @Query("SELECT company FROM experience_table2")
-    fun getWorkCompany2(): String
+    fun getWorkCompany2(): String?
 
     @Query("SELECT date_from FROM experience_table2")
-    fun getWorkDateFrom2(): String
+    fun getWorkDateFrom2(): String?
 
     @Query("SELECT date_to FROM experience_table2")
-    fun getWorkDateTo2(): String
+    fun getWorkDateTo2(): String?
 
     @Query("SELECT position FROM experience_table2")
-    fun getWorkPosition2(): String
+    fun getWorkPosition2(): String?
 
     @Query("SELECT responsibilities FROM experience_table2")
-    fun getWorkResponsibilities2(): String
+    fun getWorkResponsibilities2(): String?
 
     @Query("SELECT city FROM experience_table2")
-    fun getWorkCity2(): String
+    fun getWorkCity2(): String?
 
     @Query("SELECT country FROM experience_table2")
-    fun getWorkCountry2(): String
+    fun getWorkCountry2(): String?
 
 
     @Query("SELECT company FROM experience_table3")
-    fun getWorkCompany3(): String
+    fun getWorkCompany3(): String?
 
     @Query("SELECT date_from FROM experience_table3")
-    fun getWorkDateFrom3(): String
+    fun getWorkDateFrom3(): String?
 
     @Query("SELECT date_to FROM experience_table3")
-    fun getWorkDateTo3(): String
+    fun getWorkDateTo3(): String?
 
     @Query("SELECT position FROM experience_table3")
-    fun getWorkPosition3(): String
+    fun getWorkPosition3(): String?
 
     @Query("SELECT responsibilities FROM experience_table3")
-    fun getWorkResponsibilities3(): String
+    fun getWorkResponsibilities3(): String?
 
     @Query("SELECT city FROM experience_table3")
-    fun getWorkCity3(): String
+    fun getWorkCity3(): String?
 
     @Query("SELECT country FROM experience_table3")
-    fun getWorkCountry3(): String
+    fun getWorkCountry3(): String?
 
     //Links
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLink(achievements: Achievements)
 
     @Query("SELECT links FROM links_table")
-    fun getLinks(): String
+    fun getLinks(): String?
 
     @Query("SELECT achievements FROM links_table")
-    fun getAchievements(): String
+    fun getAchievements(): String?
 
     @Query("SELECT skills FROM links_table")
-    fun getSkills(): String
+    fun getSkills(): String?
 }

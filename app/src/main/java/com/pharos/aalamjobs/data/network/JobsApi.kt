@@ -1,36 +1,47 @@
 package com.pharos.aalamjobs.data.network
 
 import com.pharos.aalamjobs.data.model.Jobs
+import com.pharos.aalamjobs.data.model.TokenAccess
+import com.pharos.aalamjobs.data.model.TokenRefresh
 import com.pharos.aalamjobs.data.responses.*
+import com.pharos.aalamjobs.data.responses.dialog.*
+import com.pharos.aalamjobs.ui.applied.model.AppliedJobsResponse
 import com.pharos.aalamjobs.ui.jobs.model.JobId
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface JobsApi {
+    @POST("/api/auth/jwt/verify/")
+    suspend fun verify(@Body verify: TokenAccess)
+    @POST("/api/auth/jwt/refresh/")
+    suspend fun refresh(@Body refresh: TokenRefresh) : TokenAccessResponse
 
-    @GET("/api/jobs/all/")
+    @GET("/api/jobs/")
     suspend fun getJobs(
         @Query ("search") q: String,
         @Query ("page") page: Int,
     ): JobsResponse
 
-    @GET("/api/jobs/all/")
-    suspend fun getJobsFiltered(
-        @Query ("page") page: Int,
-        @Query ("country") country: String,
-        @Query ("city") city: String,
-        @Query ("sector") sector: String
+    @GET("/api/applications/me/")
+    suspend fun getApplied(
+    ): AppliedJobsResponse
 
+    @GET("/api/jobs/")
+    suspend fun getJobsFiltered(
+     @QueryMap options: Map<String, String>
         ): JobsResponse
 
+    @PATCH("/api/resumes/{id}/")
+    @Multipart
+    suspend fun uploadImage(
+        @Path ("id") id: Int,
+        @Part photo: MultipartBody.Part?
+    )
 
-
-    @GET("/api/jobs/favorites/")
+    @GET("/api/jobs/favorites/all/")
     suspend fun getFavoriteJobs(): FavJobsResponse
 
     @GET("/api/countries/")
@@ -56,30 +67,28 @@ interface JobsApi {
     @POST("logout")
     suspend fun logout(): ResponseBody
 
-    @POST("/api/users/favorites/")
+    @POST("/api/jobs/favorites/")
     suspend fun setFavorite(
-//        @Header("Authorization") token: String,
         @Body jobId: JobId
     )
 
-    @POST("/api/users/favorites/")
+    @POST("/api/jobs/favorites/")
     suspend fun setFavoriteFromDetail(
         @Header("Authorization") token: String,
         @Body jobId: JobId
     )
 
-    @DELETE("/api/users/favorites/{job}/")
+    @DELETE("/api/jobs/favorites/{job}/")
     suspend fun deleteFavorite(@Path("job") job: Int)
 
-    @DELETE("/api/users/favorites/{job}/")
+    @DELETE("/api/jobs/favorites/{job}/")
     suspend fun deleteFavoriteFromDetail(
         @Path("job") job: Int,
         @Header("Authorization") token: String,
     )
 
     companion object {
-
-        private const val BASE_URL = "http://165.227.143.167:9000"
+        private const val BASE_URL = "http://165.22.88.94:9000"
 
         operator fun invoke(): JobsApi {
             val requestInterceptor = Interceptor { chain ->

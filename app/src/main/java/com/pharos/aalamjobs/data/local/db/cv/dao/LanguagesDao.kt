@@ -28,7 +28,7 @@ interface LanguagesDao {
     suspend fun deleteAllFromOtherLanguage3()
 
     @Query("SELECT mother_language FROM mother_languages_table")
-    fun getMotherLanguage(): String
+    fun getMotherLanguage(): String?
 
 //    @TypeConverters(Converters::class)
 //    @Query("SELECT * FROM languages_table")
@@ -45,40 +45,40 @@ interface LanguagesDao {
     suspend fun insertOtherLang3(otherLanguages: OtherLanguages3)
 
     @Query("SELECT name FROM other_languages_table")
-    fun getOtherLangName(): String
+    fun getOtherLangName(): String?
 
     @Query("SELECT talking FROM other_languages_table")
-    fun getLangSkillTalking(): String
+    fun getLangSkillTalking(): String?
     @Query("SELECT listening FROM other_languages_table")
-    fun getLangSkillListening(): String
+    fun getLangSkillListening(): String?
     @Query("SELECT reading FROM other_languages_table")
-    fun getLangSkillReading(): String
+    fun getLangSkillReading(): String?
     @Query("SELECT writing FROM other_languages_table")
-    fun getLangSkillWriting(): String
+    fun getLangSkillWriting(): String?
 
     @Query("SELECT name FROM other_languages_table2")
-    fun getOtherLangName2(): String
+    fun getOtherLangName2(): String?
 
     @Query("SELECT talking FROM other_languages_table2")
-    fun getLangSkillTalking2(): String
+    fun getLangSkillTalking2(): String?
     @Query("SELECT listening FROM other_languages_table2")
-    fun getLangSkillListening2(): String
+    fun getLangSkillListening2(): String?
     @Query("SELECT reading FROM other_languages_table2")
-    fun getLangSkillReading2(): String
+    fun getLangSkillReading2(): String?
     @Query("SELECT writing FROM other_languages_table2")
-    fun getLangSkillWriting2(): String
+    fun getLangSkillWriting2(): String?
 
     @Query("SELECT name FROM other_languages_table3")
-    fun getOtherLangName3(): String
+    fun getOtherLangName3(): String?
 
     @Query("SELECT talking FROM other_languages_table3")
-    fun getLangSkillTalking3(): String
+    fun getLangSkillTalking3(): String?
     @Query("SELECT listening FROM other_languages_table3")
-    fun getLangSkillListening3(): String
+    fun getLangSkillListening3(): String?
     @Query("SELECT reading FROM other_languages_table3")
-    fun getLangSkillReading3(): String
+    fun getLangSkillReading3(): String?
     @Query("SELECT writing FROM other_languages_table3")
-    fun getLangSkillWriting3(): String
+    fun getLangSkillWriting3(): String?
 
 
 

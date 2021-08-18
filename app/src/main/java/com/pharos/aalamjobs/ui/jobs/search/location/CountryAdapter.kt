@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.pharos.aalamjobs.data.model.Jobs
-import com.pharos.aalamjobs.data.responses.CountryResponseItem
+import com.pharos.aalamjobs.data.responses.dialog.CountryResponseItem
 import com.pharos.aalamjobs.databinding.ListItemBinding
 
 class CountryAdapter(
@@ -14,12 +13,6 @@ class CountryAdapter(
 ) : ListAdapter<CountryResponseItem, CountryAdapter.JobsViewHolder>(DIFF) {
 
     private var _binding: ListItemBinding? = null
-    private var jobsList: MutableList<Jobs> = mutableListOf()
-
-    public fun addData(data: MutableList<Jobs>) {
-        jobsList = data
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobsViewHolder {
         _binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -40,26 +33,29 @@ class CountryAdapter(
 
         fun onBind(position: Int) {
             val current = getItemAtPos(position)
-
             binding.tvCounter.text = current.name.en
 
             binding.root.setOnClickListener {
                 listener.onCountryClick(position)
             }
-
         }
     }
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<CountryResponseItem>() {
-            override fun areItemsTheSame(oldItem: CountryResponseItem, newItem: CountryResponseItem): Boolean {
+            override fun areItemsTheSame(
+                oldItem: CountryResponseItem,
+                newItem: CountryResponseItem
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: CountryResponseItem, newItem: CountryResponseItem): Boolean {
+            override fun areContentsTheSame(
+                oldItem: CountryResponseItem,
+                newItem: CountryResponseItem
+            ): Boolean {
                 return oldItem.id == newItem.id
             }
-
         }
     }
 

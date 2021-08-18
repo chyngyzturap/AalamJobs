@@ -117,11 +117,11 @@
     <string name="tab_personals">Жеке маалымат</string>
     <string name="tab_contacts">Байланыш маалымат</string>
     <string name="tab_education">Билим берүү</string>
-    <string name="tab_language">Язык</string>
+    <string name="tab_language">Тил</string>
     <string name="tab_experience">Тажрыйба</string>
     <string name="tab_job_requirements">Талаптар</string>
     <string name="txt_job_application_form">"Резюме берүү формасы "</string>
-    <string name="specialization">Specialization</string>
+    <string name="specialization">Адистештирүү</string>
     <string name="city">Шаар</string>
     <string name="country">Өлкө</string>
     <string name="links">Шилтемелер</string>
@@ -153,6 +153,31 @@
     <string name="city_country">"Шаар, өлкө  "</string>
     <string name="cancel">"Жокко чыгаруу "</string>
     <string name="please_sign_up_to_get_access">"Кирүү үчүн катталыңыз "</string>
+    <string name="currency">Валюта</string>
+    <string name="login_with_email">"Электрондук почта менен кирүү "</string>
+    <string name="login_with_phone">Телефон менен кирүү</string>
+    <string name="please_choose_favorites_from_list">" Сураныч, тизмеден сүйүктүүлөрдү тандаңыз"</string>
+    <string name="please_write_your_resume">" Сураныч, резюмеңизди жазыңыз"</string>
+    <string name="please_log_in_to_add_profile_info">Сураныч, профиль маалыматын кошуу үчүн кириңиз</string>
+    <string name="you_have_not_sent_your_resume_yet">Сиз азырынча резюмеңизди жөнөтө элексиз</string>
+    <string name="till_now">Till now</string>
+    <string name="your_website_or_portfolio_links">Сиздин вебсайт же портфолио шилтемелери</string>
+    <string name="press_icon">белгини кошуу үчүн сөлөкөтүн басыңыз</string>
+    <string name="i_am_currently_working_on_this_position">Учурда бул кызматта иштеп жатам</string>
+    <string name="password_length">Сырсөз 8 ден кем болбошу керек</string>
+    <string name="password_numeric">Бул сырсөз толугу менен сандык</string>
+    <string name="already_exist">Бул телефон номери бар колдонуучу мурунтан эле бар</string>
+    <string name="exist_user">Бул телефон номери бар колдонуучу мурунтан эле бар</string>
+    <string name="share_via">Аркылуу бөлүшүү ...</string>
+    <string name="enter_mobile_number">Мобилдик номерди киргизиңиз</string>
+    <string name="pwd_changed_success">Куттуктайм! Сырсөзүңүз ийгиликтүү өзгөртүлдү</string>
+    <string name="pwd_mismatch">Сырсөздөр дал келбейт</string>
+    <string name="invalid_otp">Жараксыз OTP</string>
+    <string name="pwd_changed_succ">Сырсөз ийгиликтүү өзгөртүлдү</string>
+    <string name="choose_lang">Тилди тандоо</string>
+    <string name="check_internet_connect">Интернет туташууңузду текшериңиз</string>
+    <string name="incorrect_email_pwd">Сиз туура эмес электрондук почта же сырсөз киргиздиңиз</string>
+    <string name="retry">Кайталап көрүңүз</string>
     <string-array name="marital_status">
         <item>Бойдок</item>
         <item>Үй-бүлөлүү </item>
