@@ -36,24 +36,24 @@ class FavoriteAdapter(
         fun onBind(position: Int) {
             val current = getItemAtPos(position)
 
-            if (current.favorite){
-            binding.jobTitle.text = current.title
-            binding.jobNameCompany.text = current.organization.name
-            binding.jobNameLocation.text = current.city.name.en.toString() + ", " +
-                    current.city.country.name.en
-            binding.jobsDate.text = current.published_date.split("T")[0]
+            if (current.favorite) {
+                binding.jobTitle.text = current.title
+                binding.jobNameCompany.text = current.organization.name
+                binding.jobNameLocation.text = current.city.name.en.toString() + ", " +
+                        current.city.country.name.en
+                binding.jobsDate.text = current.published_date.split("T")[0]
                 binding.jobsSalary.text =
                     current.salary.min.toString() + "-" + current.salary.max + current.currency.sign
 
-            if (current.favorite){
-                binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_filled)
+                if (current.favorite) {
+                    binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_filled)
 
-            } else {
-                binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
-            }
+                } else {
+                    binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
+                }
 
-            binding.ivJobFavorite.setOnClickListener{
-                current.favorite
+                binding.ivJobFavorite.setOnClickListener {
+                    current.favorite
 
                     if (!current.favorite) {
                         current.favorite
@@ -64,7 +64,7 @@ class FavoriteAdapter(
                         binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
                         listener.deleteFromFavorites(current.id)
                     }
-            }
+                }
             }
 
             binding.root.setOnClickListener {
@@ -78,7 +78,6 @@ class FavoriteAdapter(
             override fun areItemsTheSame(oldItem: FavJobs, newItem: FavJobs): Boolean {
                 return oldItem.id == newItem.id
             }
-
             override fun areContentsTheSame(oldItem: FavJobs, newItem: FavJobs): Boolean {
                 return oldItem.title == newItem.title
             }

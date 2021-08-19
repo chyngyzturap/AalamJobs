@@ -1,4 +1,4 @@
-package com.pharos.aalamjobs.utils
+package com.pharos.aalamjobs.ui.jobs.utils
 
 import com.pharos.aalamjobs.data.responses.dialog.CurrencyResponse
 

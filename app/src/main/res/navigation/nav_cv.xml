@@ -66,6 +66,6 @@
     </fragment>
     <fragment
         android:id="@+id/requiredSectionsDialogFragment"
-        android:name="com.pharos.aalamjobs.utils.RequiredSectionsDialogFragment"
+        android:name="com.pharos.aalamjobs.utils.dialogfragments.RequiredSectionsDialogFragment"
         android:label="RequiredSectionsDialogFragment" />
 </navigation>

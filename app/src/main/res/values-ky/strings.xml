@@ -178,6 +178,7 @@
     <string name="check_internet_connect">Интернет туташууңузду текшериңиз</string>
     <string name="incorrect_email_pwd">Сиз туура эмес электрондук почта же сырсөз киргиздиңиз</string>
     <string name="retry">Кайталап көрүңүз</string>
+    <string name="job_not_found">Жумуш табылган жок</string>
     <string-array name="marital_status">
         <item>Бойдок</item>
         <item>Үй-бүлөлүү </item>

@@ -1,9 +1,12 @@
 package com.pharos.aalamjobs.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat.recreate
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -19,6 +22,7 @@ import com.pharos.aalamjobs.ui.base.BaseFragment
 import com.pharos.aalamjobs.ui.cv.CvActivity
 import com.pharos.aalamjobs.ui.settings.SettingsFragment
 import com.pharos.aalamjobs.utils.dialogfragments.SignUpDialogFragment
+import com.pharos.aalamjobs.utils.hideSoftKeyboard
 import com.pharos.aalamjobs.utils.visible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.flow.first
@@ -27,7 +31,12 @@ import kotlinx.coroutines.runBlocking
 
 class ProfileFragment : BaseFragment<AuthViewModel, FragmentProfileBinding, AuthRepository>(),
     SettingsFragment.QuitListener, UserListener{
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.setOnClickListener {
+            hideSoftKeyboard(requireActivity())
+        }
+    }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         requireActivity().nav_bottom.visible(true)
@@ -52,6 +61,7 @@ class ProfileFragment : BaseFragment<AuthViewModel, FragmentProfileBinding, Auth
         }
 
         binding.ivEdit.setOnClickListener {
+            recreate(requireActivity())
             val token = runBlocking { userPreferences.tokenAccess.first() }
             if (token.isNullOrEmpty()){
                 showSignUpDialog()
@@ -124,6 +134,7 @@ class ProfileFragment : BaseFragment<AuthViewModel, FragmentProfileBinding, Auth
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initUserData(userResponse: UserResponse){
         if(userResponse.city != null && userResponse.country != null
             && userResponse.city != "" && userResponse.country != ""){

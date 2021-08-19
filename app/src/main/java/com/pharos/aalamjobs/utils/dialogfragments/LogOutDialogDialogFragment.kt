@@ -19,8 +19,6 @@ import kotlinx.coroutines.runBlocking
 
 class LogOutDialogDialogFragment: BaseDialogFragment<AuthViewModel, LayoutLogOutBinding, AuthRepository>(){
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,10 +44,12 @@ class LogOutDialogDialogFragment: BaseDialogFragment<AuthViewModel, LayoutLogOut
                 }
             }
             requireActivity().startNewActivity(SplashActivity::class.java)
+            dismiss()
         }
 
         binding.btnCancel.setOnClickListener {
             requireActivity().onBackPressed()
+            dismiss()
         }
 
     }

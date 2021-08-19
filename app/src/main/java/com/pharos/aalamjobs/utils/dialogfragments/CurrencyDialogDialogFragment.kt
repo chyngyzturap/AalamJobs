@@ -14,7 +14,7 @@ import com.pharos.aalamjobs.databinding.LayoutCountryBinding
 import com.pharos.aalamjobs.ui.base.BaseDialogFragment
 import com.pharos.aalamjobs.ui.jobs.JobsViewModel
 import com.pharos.aalamjobs.ui.jobs.utils.SearchListener
-import com.pharos.aalamjobs.utils.CurrencyListener
+import com.pharos.aalamjobs.ui.jobs.utils.CurrencyListener
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 

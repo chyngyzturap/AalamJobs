@@ -65,7 +65,11 @@ class OtpFragment : BaseFragment<AuthViewModel, FragmentOtpBinding, AuthReposito
                     binding.progressbar.visible(true)
                 } else {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        Toast.makeText(requireContext(), "${task.exception?.message}", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            requireContext(),
+                            "${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                     }
                 }
@@ -102,16 +106,10 @@ class OtpFragment : BaseFragment<AuthViewModel, FragmentOtpBinding, AuthReposito
         remoteDataSource.buildApiWithoutToken(AuthApi::class.java), userPreferences
     )
 
-    override fun isUserExists(exists: Boolean) {
+    override fun isUserExists(available: Boolean) {
     }
 
     override fun signInFail(errorCode: ResponseBody?, code: Int?) {
-    }
-
-    override fun checkSuccess() {
-    }
-
-    override fun checkInFail(error: String?) {
     }
 
     override fun userDataSavedLogin() {
@@ -126,7 +124,6 @@ class OtpFragment : BaseFragment<AuthViewModel, FragmentOtpBinding, AuthReposito
     override fun createUserSuccess(username: String) {
         binding.progressbar.visible(false)
         password = arguments?.getString("password")
-
         val bundle = Bundle()
         bundle.putString("username", username)
         bundle.putString("password", password)
@@ -136,6 +133,4 @@ class OtpFragment : BaseFragment<AuthViewModel, FragmentOtpBinding, AuthReposito
     override fun createUserFailed(code: Int?) {
         Toast.makeText(requireContext(), "Failed $code", Toast.LENGTH_SHORT).show()
     }
-
-
 }

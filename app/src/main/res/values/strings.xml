@@ -166,7 +166,7 @@
     <string name="password_numeric">This password is entirely numeric</string>
     <string name="already_exist">User with this phone number already exists</string>
     <string name="exist_user">User with this phone number already exists</string>
-    <string name="share_via">Share via...</string>
+    <string name="share_via">Share via…</string>
     <string name="enter_mobile_number">Enter mobile number</string>
     <string name="pwd_changed_success">Congratulations! Your password is successfully changed</string>
     <string name="pwd_mismatch">Passwords mismatch</string>
@@ -176,6 +176,7 @@
     <string name="check_internet_connect">Please check your internet connection</string>
     <string name="incorrect_email_pwd">You\'ve entered incorrect email or password</string>
     <string name="retry">Retry</string>
+    <string name="job_not_found">Job not found</string>
 
     <string-array name="marital_status">
         <item>Single</item>

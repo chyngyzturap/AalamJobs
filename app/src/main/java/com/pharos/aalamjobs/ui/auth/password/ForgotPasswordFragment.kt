@@ -62,12 +62,6 @@ class ForgotPasswordFragment :
     override fun signInFail(errorCode: ResponseBody?, code: Int?) {
     }
 
-    override fun checkSuccess() {
-    }
-
-    override fun checkInFail(error: String?) {
-    }
-
     override fun userDataSavedLogin() {
     }
 

@@ -33,10 +33,6 @@ class AuthViewModel(
     val loginResponse: LiveData<Resource<LoginResponse>>
         get() = _loginResponse
 
-    private val _user: MutableLiveData<Resource<TokenObtainPair>> = MutableLiveData()
-    val user: LiveData<Resource<TokenObtainPair>>
-        get() = _user
-
     fun login(
         tokenObtainPair: TokenObtainPair
     ) = viewModelScope.launch {
@@ -49,19 +45,6 @@ class AuthViewModel(
     ) = viewModelScope.launch {
         when (val response = repository.createUser(createUserModel)) {
             is Resource.Success -> {
-                val modelLogin =
-                    CreateUserModel(
-                        createUserModel.username, createUserModel.password,
-                        createUserModel.role, createUserModel.fullname
-                    )
-
-                val modelUser =
-                    TokenObtainPair(
-                        modelLogin.username,
-                        modelLogin.password
-                    )
-
-                login(modelUser)
                 registerListener?.createUserSuccess(response.value.username)
             }
             is Resource.Failure -> {

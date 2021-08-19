@@ -87,9 +87,7 @@ class SettingsFragment : BaseFragment<AuthViewModel, FragmentSettingsBinding, Au
     }
 
     private fun initUserData(userResponse: UserResponse) {
-
         binding.tvSettingsProfileFullName.text = userResponse.fullname
-
         if (userResponse.photo != "")
             Glide.with(binding.root).load(userResponse.photo)
                 .into(binding.ivProfileSettings)

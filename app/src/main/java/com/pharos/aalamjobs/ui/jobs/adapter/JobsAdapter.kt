@@ -1,5 +1,6 @@
 package com.pharos.aalamjobs.ui.jobs.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,13 +15,6 @@ class JobsAdapter(
 ) : ListAdapter<Jobs, JobsAdapter.JobsViewHolder>(DIFF) {
 
     private var _binding: JobsItemBinding? = null
-    private var jobsList: MutableList<Jobs> = mutableListOf()
-
-    public fun addData(data: MutableList<Jobs>) {
-        jobsList = data
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobsViewHolder {
         _binding = JobsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return JobsViewHolder(_binding!!)
@@ -30,10 +24,6 @@ class JobsAdapter(
         holder.onBind(position)
     }
 
-//    override fun getItemCount(): Int {
-//        return jobsList.size
-//    }
-
     fun getItemAtPos(position: Int): Jobs {
         return getItem(position)
     }
@@ -41,17 +31,9 @@ class JobsAdapter(
     inner class JobsViewHolder(private val binding: JobsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun onBind(position: Int) {
             val current = getItemAtPos(position)
-
-
-//            binding.jobNameLocation.text = jobsList[position].city.toString()
-//            binding.jobTitle.text = jobsList[position].title
-//            binding.jobsDate.text = jobsList[position].published
-//            binding.jobsSalary.text = jobsList[position].salary.min.toString() + "-" +
-//                    jobsList[position].salary.max + current.salary.currency
-//            binding.jobNameCompany.text = jobsList[position].city.name.toString() + ", " +
-//                    jobsList[position].city.country.name
 
             binding.jobTitle.text = current.title
             binding.jobNameCompany.text = current.organization.name
@@ -61,37 +43,30 @@ class JobsAdapter(
             binding.jobsSalary.text =
                 current.salary.min.toString() + "-" + current.salary.max + current.currency.sign
 
-
-
-            if (current.favorite){
+            if (current.favorite) {
                 binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_filled)
 
             } else {
                 binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
             }
 
-
-
-            binding.ivJobFavorite.setOnClickListener{
+            binding.ivJobFavorite.setOnClickListener {
                 current.favorite
 
-                    if (!current.favorite) {
-                        current.favorite
-                        binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_filled)
-                        listener.addToFavorites(current.id)
-
-                    } else {
-                        !current.favorite
-                        binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
-                        listener.deleteFromFavorites(current.id)
-
-                    }
+                if (!current.favorite) {
+                    current.favorite
+                    binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_filled)
+                    listener.addToFavorites(current.id)
+                } else {
+                    !current.favorite
+                    binding.ivJobFavorite.setImageResource(R.drawable.vector_favorite_red_empty)
+                    listener.deleteFromFavorites(current.id)
+                }
             }
 
             binding.root.setOnClickListener {
                 listener.onJobClick(current.id)
             }
-
         }
     }
 
@@ -100,11 +75,9 @@ class JobsAdapter(
             override fun areItemsTheSame(oldItem: Jobs, newItem: Jobs): Boolean {
                 return oldItem.id == newItem.id
             }
-
             override fun areContentsTheSame(oldItem: Jobs, newItem: Jobs): Boolean {
                 return oldItem.title == newItem.title
             }
-
         }
     }
 

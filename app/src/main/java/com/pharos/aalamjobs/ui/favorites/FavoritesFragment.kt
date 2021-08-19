@@ -31,7 +31,6 @@ class FavoritesFragment : BaseFragment<JobsViewModel, FragmentFavoritesBinding, 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.progressbar.visible(true)
         viewModel.setFavJobsListener(this)
         viewModel.getFavJobsList(page)
@@ -61,7 +60,6 @@ class FavoritesFragment : BaseFragment<JobsViewModel, FragmentFavoritesBinding, 
         val token = runBlocking { userPreferences.tokenAccess.first() }
         val apiNoToken = remoteDataSource.buildApiWithoutToken(JobsApi::class.java, token)
         val api = remoteDataSource.buildApi(JobsApi::class.java, token)
-
         if (token.isNullOrEmpty()){
             return JobsRepository(apiNoToken)
         } else {

@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -125,6 +127,7 @@ UserListener{
     }
 
     private fun uploadData(){
+        binding.progressbar.visible(true)
         val email = binding.etEmail.text.toString().trim()
         val fullname = binding.etFullName.text.toString().trim()
         val position = binding.etTitle.text.toString().trim()
@@ -132,7 +135,10 @@ UserListener{
         val country = binding.etCountry.text.toString().trim()
 
         uploadImage(requestImage, email, fullname, position, city, country)
-        findNavController().navigate(R.id.nav_profile)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController().navigate(R.id.nav_profile)
+        }, 3000)
     }
 
     override fun setUserData(userResponse: UserResponse) {
@@ -145,7 +151,7 @@ UserListener{
 
     private fun fileFromContentUri(context: Context, uri: Uri?) : File {
         val fileExtension = getFileExtension(context, uri)
-        val fileName = "temp_file.jpg" + if (fileExtension != null) ".$fileExtension" else ""
+        val fileName = "aalam_jobs_avatar.jpg" + if (fileExtension != null) ".$fileExtension" else ""
 
         val tempFile = File(context.cacheDir, fileName)
         tempFile.createNewFile()
@@ -178,5 +184,4 @@ UserListener{
             target.write(buf, 0, length)
         }
     }
-
 }

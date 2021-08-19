@@ -41,7 +41,6 @@ class PasswordOtpFragment : BaseFragment<AuthViewModel, FragmentPasswordOtpBindi
                val bundle = Bundle()
               bundle.putString("phone", phone)
                     findNavController().navigate(R.id.action_passwordOtpFragment_to_newPasswordFragment, bundle)
-
                 } else {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         Toast.makeText(requireContext(), getString(R.string.invalid_otp), Toast.LENGTH_SHORT).show()
@@ -61,5 +60,4 @@ class PasswordOtpFragment : BaseFragment<AuthViewModel, FragmentPasswordOtpBindi
     override fun getFragmentRepository() = AuthRepository (
         remoteDataSource.buildApiWithoutToken(AuthApi::class.java), userPreferences
     )
-
 }

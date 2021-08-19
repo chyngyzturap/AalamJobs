@@ -129,8 +129,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:background="@color/white">
+                android:layout_alignParentRight="true">
 
                 <TextView
                     android:id="@+id/jobs_date"

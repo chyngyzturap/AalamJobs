@@ -1,4 +1,4 @@
-package com.pharos.aalamjobs.utils
+package com.pharos.aalamjobs.utils.dialogfragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.pharos.aalamjobs.R
 import com.pharos.aalamjobs.databinding.LayoutRequiredSectorsBinding
+import com.pharos.aalamjobs.utils.visible
 
 class RequiredSectionsDialogFragment(
     var profileCode: Int, var contactCode: Int,

@@ -8,6 +8,5 @@ import com.pharos.aalamjobs.data.repository.BaseRepository
 abstract class BaseViewModel(
     private val repository: BaseRepository
 ) : ViewModel() {
-
     suspend fun logout(api: AuthApi) = repository.logout(api)
 }

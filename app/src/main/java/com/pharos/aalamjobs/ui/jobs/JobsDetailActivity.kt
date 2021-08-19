@@ -35,6 +35,14 @@ class JobsDetailActivity : BaseActivity<JobsViewModel, ActivityJobsDetailBinding
         binding.progressbar.visible(true)
         viewModel.setJobListener(this)
 
+        getThisJob()
+
+        binding.ivBackpressed.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    private fun getThisJob() {
         val jobId = intent.getIntExtra("jobId", 0)
         if (jobId != 0) {
             viewModel.getJobData(jobId)
@@ -50,12 +58,9 @@ class JobsDetailActivity : BaseActivity<JobsViewModel, ActivityJobsDetailBinding
             if (jobIdStr.isDigitsOnly()) {
                 viewModel.getJobData(jobIdStr.toInt())
             } else {
-                Toast.makeText(this, "Job not found", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.job_not_found), Toast.LENGTH_SHORT).show()
                 startNewActivity(MainActivity::class.java)
             }
-        }
-        binding.ivBackpressed.setOnClickListener {
-            onBackPressed()
         }
     }
 
@@ -63,7 +68,7 @@ class JobsDetailActivity : BaseActivity<JobsViewModel, ActivityJobsDetailBinding
     override fun setJob(jobs: Jobs) {
         binding.progressbar.visible(false)
         this.job = jobs
-        val linkUri = "http://165.22.88.94:9000/api/jobs/${jobs.id}"
+        val linkUri = "http://aalamjobs.com/vacancies/vacancyDetail/${jobs.id}"
 
         val respList = jobs.responsibilities
         var respText = ""

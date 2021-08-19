@@ -13,6 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     <RelativeLayout
         android:id="@+id/head_bg_container"
         android:layout_width="match_parent"
@@ -24,8 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:elevation="5dp">
-
-
 
             <ImageView
                 android:id="@+id/iv_done"
@@ -89,18 +97,6 @@
         </RelativeLayout>
 
     </RelativeLayout>
-
-
-<!--    <ImageView-->
-<!--        android:id="@+id/iv_bg_head"-->
-<!--        android:scaleType="fitStart"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="350dp"-->
-<!--        android:src="@drawable/ic_bg_vector_darkgreen" />-->
-
-
-
-
 
     <RelativeLayout
         android:layout_below="@id/head_bg_container"

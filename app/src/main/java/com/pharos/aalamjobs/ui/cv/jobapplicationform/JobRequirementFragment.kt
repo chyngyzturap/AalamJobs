@@ -27,7 +27,7 @@ import com.pharos.aalamjobs.ui.jobs.utils.SearchListener
 import com.pharos.aalamjobs.ui.main.MainActivity
 import com.pharos.aalamjobs.utils.dialogfragments.CurrencyDialogDialogFragment
 import com.pharos.aalamjobs.utils.dialogfragments.EmploymentTypeDialogDialogFragment
-import com.pharos.aalamjobs.utils.RequiredSectionsDialogFragment
+import com.pharos.aalamjobs.utils.dialogfragments.RequiredSectionsDialogFragment
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

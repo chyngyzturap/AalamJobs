@@ -57,16 +57,10 @@ class JobsFragment : BaseFragment<JobsViewModel, FragmentJobsBinding, JobsReposi
         super.onViewCreated(view, savedInstanceState)
 
         verifyToken()
-
-        val jobIdForApply = requireActivity().intent.getIntExtra("jobIdForApply", 0)
-        if (jobIdForApply != 0) {
-            findNavController().navigate(R.id.nav_resume)
-        }
+        goToResumeFromSendCvBtn()
         binding.progressbar.visible(true)
         viewModel.setJobsListener(this)
         binding.rvJobs.setHasFixedSize(true)
-
-        cleanSearchIntents()
         filterList()
         uploadPhotoToCreatedCv()
 
@@ -108,6 +102,13 @@ class JobsFragment : BaseFragment<JobsViewModel, FragmentJobsBinding, JobsReposi
             override fun afterTextChanged(p0: Editable?) {
             }
         })
+    }
+
+    private fun goToResumeFromSendCvBtn() {
+        val jobIdForApply = requireActivity().intent.getIntExtra("jobIdForApply", 0)
+        if (jobIdForApply != 0) {
+            findNavController().navigate(R.id.nav_resume)
+        }
     }
 
     private fun verifyToken() {
@@ -257,17 +258,6 @@ class JobsFragment : BaseFragment<JobsViewModel, FragmentJobsBinding, JobsReposi
     }
 
     override fun getFavJobError(code: Int?) {
-    }
-
-    private fun cleanSearchIntents() {
-        val countryIntent = requireActivity().intent.getIntExtra("countryId", 0)
-        val cityIntent = requireActivity().intent.getIntExtra("cityId", 0)
-        val sectorIntent = requireActivity().intent.getIntExtra("sectorId", 0)
-        if (countryIntent != 0 || cityIntent != 0 || sectorIntent != 0) {
-            requireActivity().intent.removeExtra("countryId")
-            requireActivity().intent.removeExtra("cityId")
-            requireActivity().intent.removeExtra("sectorId")
-        }
     }
 
     private fun fileFromContentUri(context: Context, uri: Uri?): File {

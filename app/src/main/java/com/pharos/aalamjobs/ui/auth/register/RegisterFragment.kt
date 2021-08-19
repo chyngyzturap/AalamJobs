@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -19,18 +17,15 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.pharos.aalamjobs.R
 import com.pharos.aalamjobs.data.model.CreateUserModel
 import com.pharos.aalamjobs.data.network.AuthApi
-import com.pharos.aalamjobs.data.network.Resource
 import com.pharos.aalamjobs.data.repository.AuthRepository
 import com.pharos.aalamjobs.data.responses.LoginResponse
 import com.pharos.aalamjobs.databinding.FragmentRegisterBinding
 import com.pharos.aalamjobs.ui.auth.AuthViewModel
 import com.pharos.aalamjobs.ui.auth.utils.LoginListener
 import com.pharos.aalamjobs.ui.base.BaseFragment
-import com.pharos.aalamjobs.utils.handleApiError
 import com.pharos.aalamjobs.utils.hideSoftKeyboard
 import com.pharos.aalamjobs.utils.visible
 import kotlinx.android.synthetic.main.fragment_register.*
-import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import java.util.concurrent.TimeUnit
 import java.util.regex.Pattern
@@ -60,18 +55,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
         auth = FirebaseAuth.getInstance()
         setupListeners()
 
-        viewModel.user.observe(viewLifecycleOwner, Observer {
-            binding.progressbar.visible(it is Resource.Loading)
-
-            when (it) {
-                is Resource.Success -> {
-                    lifecycleScope.launch {
-                    }
-                }
-                is Resource.Failure -> handleApiError(it) { }
-            }
-        })
-
         binding.buttonLogin.setOnClickListener {
             checkPhone()
         }
@@ -79,7 +62,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
         binding.tvLogin.setOnClickListener {
             findNavController().navigate(R.id.nav_login)
         }
-
     }
 
     private fun checkPhone() {
@@ -99,7 +81,7 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
         val firebaseAuth = FirebaseAuth.getInstance()
         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener {
             if (it.isSuccessful)
-//                viewModel.createNewUser(createUserModel)
+                Log.d("RegisterRegularFragment", "signInwithPhone: success ${it.result}")
             else
                 Log.d("RegisterRegularFragment", "signInwithPhone: failed ${it.exception}")
         }
@@ -223,7 +205,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
 
     private fun isStringContainNumber(text: String): Boolean {
         val pattern = Pattern.compile(".*[a-z].*")
-
         val matcher = pattern.matcher(text)
         return matcher.matches()
     }
@@ -233,12 +214,6 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentRegisterBinding, Au
     }
 
     override fun signInFail(errorCode: ResponseBody?, code: Int?) {
-    }
-
-    override fun checkSuccess() {
-    }
-
-    override fun checkInFail(error: String?) {
     }
 
     override fun userDataSavedLogin() {

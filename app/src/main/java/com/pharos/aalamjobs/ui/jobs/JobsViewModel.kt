@@ -12,7 +12,7 @@ import com.pharos.aalamjobs.ui.applied.AppliedListener
 import com.pharos.aalamjobs.ui.base.BaseViewModel
 import com.pharos.aalamjobs.ui.jobs.model.JobId
 import com.pharos.aalamjobs.ui.jobs.utils.*
-import com.pharos.aalamjobs.utils.CurrencyListener
+import com.pharos.aalamjobs.ui.jobs.utils.CurrencyListener
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody

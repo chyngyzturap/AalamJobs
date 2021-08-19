@@ -178,6 +178,7 @@
     <string name="check_internet_connect">Lütfen internet bağlantınızı kontrol edin</string>
     <string name="incorrect_email_pwd">Yanlış e-posta veya şifre girdiniz</string>
     <string name="retry">Yeniden dene</string>
+    <string name="job_not_found">İş bulunamadı</string>
     <string-array name="marital_status">
         <item>Evli değil</item>
         <item>Evli</item>
