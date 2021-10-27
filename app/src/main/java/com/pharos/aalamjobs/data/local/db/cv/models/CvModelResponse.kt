@@ -3,7 +3,6 @@ package com.pharos.aalamjobs.data.local.db.cv.models
 import com.pharos.aalamjobs.data.local.db.cv.entities.Education
 import com.pharos.aalamjobs.data.local.db.cv.entities.Social
 import com.pharos.aalamjobs.ui.jobs.model.OtherLanguage
-import com.pharos.aalamjobs.ui.jobs.model.Owner
 
 data class CvModelResponse(
     val achievements: List<String>,
@@ -28,7 +27,7 @@ data class CvModelResponse(
     val middlename: String,
     val mother_language: String,
     val other_languages: List<OtherLanguage>,
-    val owner: Owner,
+//    val owner: Owner,
     val phone: String,
     val portfolio: List<String>,
     val position: String,

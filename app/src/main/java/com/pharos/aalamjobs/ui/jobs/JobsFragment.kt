@@ -113,8 +113,11 @@ class JobsFragment : BaseFragment<JobsViewModel, FragmentJobsBinding, JobsReposi
 
     private fun verifyToken() {
         val token = runBlocking { userPreferences.tokenAccess.first() }
-        val access = TokenAccess(token)
-        viewModel.verify(access)
+        if (token.isNullOrEmpty()){
+        } else {
+            val access = TokenAccess(token)
+            viewModel.verify(access)
+        }
     }
 
     private fun showSignUpDialog() {

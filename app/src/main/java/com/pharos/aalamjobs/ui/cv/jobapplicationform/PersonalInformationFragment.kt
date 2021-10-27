@@ -276,7 +276,6 @@ class PersonalInformationFragment :
         mBuilder.setSingleChoiceItems(langList, -1) { dialog, which ->
             when (which) {
                 0 -> {
-                    setLocale(requireContext(), "en")
                     val langEn = LangLocale("en")
                     launch {
                         context?.let {
@@ -284,9 +283,9 @@ class PersonalInformationFragment :
                                 .insertLangLocale(langEn)
                         }
                     }
+                    setLocale(requireContext(), "en")
                 }
                 1 -> {
-                    setLocale(requireContext(), "ky")
                     val langKy = LangLocale("en")
                     launch {
                         context?.let {
@@ -294,9 +293,9 @@ class PersonalInformationFragment :
                                 .insertLangLocale(langKy)
                         }
                     }
+                    setLocale(requireContext(), "ky")
                 }
                 2 -> {
-                    setLocale(requireContext(), "ru")
                     val langRu = LangLocale("ru")
                     launch {
                         context?.let {
@@ -304,9 +303,9 @@ class PersonalInformationFragment :
                                 .insertLangLocale(langRu)
                         }
                     }
+                    setLocale(requireContext(), "ru")
                 }
                 3 -> {
-                    setLocale(requireContext(), "tr")
                     val langTr = LangLocale("tr")
                     launch {
                         context?.let {
@@ -314,6 +313,7 @@ class PersonalInformationFragment :
                                 .insertLangLocale(langTr)
                         }
                     }
+                    setLocale(requireContext(), "tr")
                 }
             }
             dialog.dismiss()

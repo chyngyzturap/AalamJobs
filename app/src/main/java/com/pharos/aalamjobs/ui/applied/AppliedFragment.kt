@@ -134,7 +134,7 @@ class AppliedFragment : BaseFragment<JobsViewModel, FragmentMainBinding, JobsRep
     override fun getAppliedError(code: Int?) {
         binding.progressbar.visible(false)
         binding.swipeRefresh.isRefreshing = false
-        Toast.makeText(requireContext(), "Error $code ", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun postFavJobSuccess() {
